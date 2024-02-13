@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+
+/**
+ * Starter class for implementing a ComboList.
+ *   @author Dave Reed (modified by YOUR_NAME)
+ *   @author 2/9/24
+ */
+public class ComboList<T> {
+    private Node<ArrayList<T>> front;
+    private Node<ArrayList<T>> back;
+    private int nodeCapacity;
+    private int numStored;
+    
+    /**
+     * Constructs an empty list.
+     *   @param capacity maximum number of values that can be stored in a node
+     */
+    public ComboList(int capacity) {
+        this.nodeCapacity = capacity;
+        this.front = new Node<ArrayList<T>>(new ArrayList<T>(), null);
+        this.back = this.front;
+        this.numStored = 0;
+    }
+    
+    /**
+     * Adds an element to the end of the list.
+     *   @param item the item to be added
+     */
+    public void add(T item) {
+        if (this.back.getData().size() == this.nodeCapacity) {
+            this.back.setNext(new Node<ArrayList<T>>(new ArrayList<T>(), null));
+            this.back = this.back.getNext();
+        }
+        this.back.getData().add(item);
+        this.numStored++;
+    }
+
+    /**
+     * Displays the contents of the ComboList, node by node, for debugging purposes.
+     */
+    public void sneakPeek() {
+        Node<ArrayList<T>> stepper = this.front;
+        int nodeNum = 0;
+        while (stepper != null) {
+            System.out.println(nodeNum++ + ": " + stepper.getData());
+            stepper = stepper.getNext();
+        }	
+    }
+
+    public int size() {
+        
+        return numStored;
+
+    }
+
+
+    public T get(int index) throws IndexOutOfBoundsException {
+
+    Node<ArrayList<T>> stepper = this.front;
+
+        if (index < numStored - 1) {
+            throw(new java.util.NoSuchElementException());
+            System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
+        }
+        
+        while (index >= stepper.getData().size())
+        if (index < stepper.getData().size()) {
+            stepper.getData().get(index);
+        } else {
+            index -= stepper.getData().size();
+            stepper = stepper.getNext();
+        }
+
+        return 
+
+    }
+}
