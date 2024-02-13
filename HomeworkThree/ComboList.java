@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Starter class for implementing a ComboList.
- *   @author Dave Reed (modified by YOUR_NAME)
+ *   @author Dave Reed (modified by Owen McGrath)
  *   @author 2/9/24
  */
 public class ComboList<T> {
@@ -56,9 +56,9 @@ public class ComboList<T> {
 
     public T get(int index) throws IndexOutOfBoundsException {
 
-    Node<ArrayList<T>> stepper = this.front;
+     Node<ArrayList<T>> stepper = this.front;
 
-        if (index < numStored - 1) {
+        if (index > numStored - 1) {
             System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
             throw(new java.util.NoSuchElementException());
         }
@@ -75,4 +75,29 @@ public class ComboList<T> {
         }
         return stepper.getData().get(index);
     }
+
+    public boolean add(int index, T value) throws IndexOutOfBoundsException{
+
+        Node<ArrayList<T>> stepper = this.front;
+
+        if (index > numStored - 1) {
+            System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
+            throw(new java.util.NoSuchElementException());
+        }
+
+        while (index >= stepper.getData().size()) {
+
+            if (index < stepper.getData().size()) {
+                this.get(index);
+                this.add(value);
+            } else {
+                index -= stepper.getData().size();
+                stepper = stepper.getNext();
+            }
+
+        }
+
+        return true;
+    }
+
 }

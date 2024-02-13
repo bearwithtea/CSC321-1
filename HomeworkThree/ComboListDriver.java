@@ -8,7 +8,12 @@ public class ComboListDriver {
         }
 
         combolist.sneakPeek();
+
         System.out.println(combolist.size());
+
+        System.out.println(combolist.get(53));
+
+        System.out.println(combolist.add(34, 45));
 
     }
 } 
