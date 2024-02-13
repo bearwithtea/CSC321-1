@@ -59,19 +59,20 @@ public class ComboList<T> {
     Node<ArrayList<T>> stepper = this.front;
 
         if (index < numStored - 1) {
-            throw(new java.util.NoSuchElementException());
             System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
-        }
-        
-        while (index >= stepper.getData().size())
-        if (index < stepper.getData().size()) {
-            stepper.getData().get(index);
-        } else {
-            index -= stepper.getData().size();
-            stepper = stepper.getNext();
+            throw(new java.util.NoSuchElementException());
         }
 
-        return 
+        while (index >= stepper.getData().size()) {
 
+            if (index < stepper.getData().size()) {
+                stepper.getData().get(index);
+            } else {
+                index -= stepper.getData().size();
+                stepper = stepper.getNext();
+            }
+            
+        }
+        return stepper.getData().get(index);
     }
 }
