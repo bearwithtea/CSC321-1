@@ -15,5 +15,9 @@ public class ComboListDriver {
 
         System.out.println(combolist.add(34, 45));
 
+        combolist.toList();
+
+        System.out.println(combolist.toString());
+
     }
 } 

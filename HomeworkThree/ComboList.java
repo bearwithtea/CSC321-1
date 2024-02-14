@@ -11,6 +11,7 @@ public class ComboList<T> {
     private Node<ArrayList<T>> back;
     private int nodeCapacity;
     private int numStored;
+    List<T> outputList = new ArrayList<T>();
     
     /**
      * Constructs an empty list.
@@ -103,8 +104,6 @@ public class ComboList<T> {
 
     public List<T> toList() {
 
-        List<T> outputList = new ArrayList<T>();
-
         for (int i = 0; i < numStored; i++) {
             outputList.add(this.get(i));
         }
@@ -113,4 +112,7 @@ public class ComboList<T> {
 
     }  
 
+    public String toString() {
+        return outputList.toString();
+    }
 }
