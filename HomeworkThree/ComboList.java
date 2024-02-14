@@ -11,7 +11,6 @@ public class ComboList<T> {
     private Node<ArrayList<T>> back;
     private int nodeCapacity;
     private int numStored;
-    List<T> outputList = new ArrayList<T>();
     
     /**
      * Constructs an empty list.
@@ -67,12 +66,8 @@ public class ComboList<T> {
 
         while (index >= stepper.getData().size()) {
 
-            if (index < stepper.getData().size()) {
-                stepper.getData().get(index);
-            } else {
-                index -= stepper.getData().size();
-                stepper = stepper.getNext();
-            }
+            index -= stepper.getData().size();
+            stepper = stepper.getNext();
             
         }
         return stepper.getData().get(index);
@@ -88,24 +83,37 @@ public class ComboList<T> {
         }
 
         while (index >= stepper.getData().size()) {
-
-            if (index < stepper.getData().size()) {
-                this.get(index);
-                this.add(value);
-            } else {
-                index -= stepper.getData().size();
-                stepper = stepper.getNext();
-            }
-
+            index -= stepper.getData().size();
+            stepper = stepper.getNext();
         }
 
-        return true;
+        stepper.getData().add(index, value);
+
+        /*
+        * if (stepper.getNext != null)
+        * if (stepper.getData.size() > this.capacity)
+         * if (stepper.getNext.getSize < this.capacity ())
+         * placementvalue = 0;
+         * placementvalue = get arraylist.size - 1
+         * stepper.getData().add(0, placementvalue)
+         * else {
+         * (new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext));
+         * stepper.setNext();
+         * add to the next node
+         * }
+         */
+            return true;
+
     }
 
     public List<T> toList() {
 
-        for (int i = 0; i < numStored; i++) {
-            outputList.add(this.get(i));
+        List<T> outputList = new ArrayList<T>();
+        Node<ArrayList<T>> stepper = this.front;
+
+        while (stepper != null) {
+            outputList.addAll(stepper.getData());
+            stepper = stepper.getNext();
         }
 
         return outputList;
@@ -113,6 +121,6 @@ public class ComboList<T> {
     }  
 
     public String toString() {
-        return outputList.toString();
+        return this.toList().toString();
     }
 }
