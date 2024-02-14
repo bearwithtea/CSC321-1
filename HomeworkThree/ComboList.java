@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Starter class for implementing a ComboList.
@@ -99,5 +100,17 @@ public class ComboList<T> {
 
         return true;
     }
+
+    public List<T> toList() {
+
+        List<T> outputList = new ArrayList<T>();
+
+        for (int i = 0; i < numStored; i++) {
+            outputList.add(this.get(i));
+        }
+
+        return outputList;
+
+    }  
 
 }
