@@ -43,9 +43,9 @@ public class Node<E> {
         
     /**
      * Setter method for next.
-     *   @param newNext the new reference to the next node
+     *   @param placeholderValue the new reference to the next node
      */
-    public void setNext(Node<E> newNext) {
-        this.next = newNext;
+    public void setNext(Integer placeholderValue) {
+        this.next = placeholderValue;
     }
 }

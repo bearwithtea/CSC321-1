@@ -102,8 +102,25 @@ public class ComboList<T> {
          * add to the next node
          * }
          */
-            return true;
 
+        if (stepper.getNext() != null) { //if the stepper next node is not null
+            Integer placeholderValue = 0;
+            if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity
+
+                if (stepper.getNext().getData().size() < this.nodeCapacity ) { //checking to see if the net node has room for another node
+                    
+                    placeholderValue = stepper.getNext().getData().size() - 1;
+                    stepper.getData().add(0, (T) placeholderValue);
+                }
+            }
+            else {
+
+                new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext());
+                stepper.setNext(placeholderValue);
+
+            }
+        }
+        return true;
     }
 
     public List<T> toList() {
