@@ -57,12 +57,12 @@ public class ComboList<T> {
 
     public T get(int index) throws IndexOutOfBoundsException {
 
-     Node<ArrayList<T>> stepper = this.front;
+    if (index > numStored - 1 || index < 0) {
+        System.out.println("You input a number greater than your size or zero, try again with a smaller number :-) ");
+        throw(new java.util.NoSuchElementException());
+    }
 
-        if (index > numStored - 1) {
-            System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
-            throw(new java.util.NoSuchElementException());
-        }
+     Node<ArrayList<T>> stepper = this.front;
 
         while (index >= stepper.getData().size()) {
 
@@ -75,12 +75,12 @@ public class ComboList<T> {
 
     public boolean add(int index, T value) throws IndexOutOfBoundsException{
 
-        Node<ArrayList<T>> stepper = this.front;
-
-        if (index > numStored - 1) {
-            System.out.println("You input a number greater than your size, try again with a smaller number :-) ");
+        if (index > numStored - 1 || index < 0) {
+            System.out.println("You input a number greater than your size or zero, try again with a smaller number :-) ");
             throw(new java.util.NoSuchElementException());
         }
+
+        Node<ArrayList<T>> stepper = this.front;
 
         while (index >= stepper.getData().size()) {
             index -= stepper.getData().size();
@@ -88,6 +88,24 @@ public class ComboList<T> {
         }
 
         stepper.getData().add(index, value);
+
+            if (stepper.getNext() != null) { //if the stepper next node is not null
+                if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity
+                    if (stepper.getNext().getData().size() < this.nodeCapacity ) { //checking to see if the net node has room for another node
+                        Integer placeholderValue = 0; //creating a palceholder intger 
+                        placeholderValue = stepper.getNext().getData().size() - 1;  //the palceholder value is given the value of the size of the last list
+                        stepper.getData().add(0, (T) placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
+                    }
+                }
+                else {
+                    new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext()); //creating a new node at the next available space
+                    Integer placeholderValue = 0; //creating a palceholder intger 
+                    placeholderValue = stepper.getNext().getData().size() - 1; //the palceholder value is given the value of the size of the last list
+                    stepper.getData().add(0, (T) placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
+                }
+            }
+            return true; //what should i be returning instead?
+    }
 
         /*
         * if (stepper.getNext != null)
@@ -102,26 +120,6 @@ public class ComboList<T> {
          * add to the next node
          * }
          */
-
-        if (stepper.getNext() != null) { //if the stepper next node is not null
-            Integer placeholderValue = 0;
-            if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity
-
-                if (stepper.getNext().getData().size() < this.nodeCapacity ) { //checking to see if the net node has room for another node
-                    
-                    placeholderValue = stepper.getNext().getData().size() - 1;
-                    stepper.getData().add(0, (T) placeholderValue);
-                }
-            }
-            else {
-
-                new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext());
-                stepper.setNext(placeholderValue);
-
-            }
-        }
-        return true;
-    }
 
     public List<T> toList() {
 
