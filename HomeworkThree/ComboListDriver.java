@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 public class ComboListDriver {
@@ -17,11 +18,9 @@ public class ComboListDriver {
             combolist.add(i);
         }
 
-        /* 
         for (int i = 0; i < combolist.size(); i++) {
             System.out.println(combolist.get(i));
         }
-        */
 
         combolist.sneakPeek();
         System.out.println(combolist.size());
@@ -32,7 +31,7 @@ public class ComboListDriver {
         System.out.println(combolist.toString());
 
     }
-/* 
+
     public static String getsUserInput() {
         Scanner scanner = new Scanner(System.in);
         String linkedArrayorCombo = "";
@@ -95,7 +94,7 @@ public class ComboListDriver {
 
     }
 
-    public static void increaseUntilMaxForQueue(List<Integer> L, Integer startingSize, Integer maxSize, Integer numberOfOperations) {
+    public static void increaseUntilMaxForQueue(ArrayList<Integer> L, Integer startingSize, Integer maxSize, Integer numberOfOperations) {
         for (int i = 0; i < startingSize; i++){
             L.add(startingSize);
         }
@@ -106,16 +105,16 @@ public class ComboListDriver {
         while (L.size() < maxSize) {
             stopWatch.start();
             for (int i = 0; i < numberOfOperations; i++) {
-                L.get();
+                L.get(i);
             }
             stopWatch.stop();
             elapsedTime = stopWatch.getElapsedTime();
             System.out.println("Size: " + L.size() + " Time: " + elapsedTime);
 
-            Integer currentSize = L.size();
+           /*  Integer currentSize = L.size();
             for (int i = 0; i < currentSize; i++) {
                 L.add(0);
-            }
+            } */
         }
-    } */
+    }
 } 

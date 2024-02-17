@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -48,12 +49,46 @@ public class ComboList<T> {
         }	
     }
 
+    /* 
+    public Iterator<T> iterator() {
+        return new ComboIterator();
+    }
+    private class ComboIterator implements Iterator<T> {
+
+        Node<ArrayList<T>> currentNode;
+        int currentIndex;
+
+        public ComboIterator() {
+            this.currentNode = ComboList.this.front;
+            this.currentIndex = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.currentNode != null && this.currentIndex < this.currentNode.getData().size();
+        }
+    
+    
+        @Override
+        public T next() {
+            T value = this.currentNode.getData().get(this.currentIndex);
+            this.currentIndex++;
+
+            if (this.currentIndex == this.currentNode.getData().size()) { 
+                this.currentNode = this.currentNode.getNext();
+                this.currentIndex = 0;
+            }
+            return value;
+        }
+    }
+
+    */
+
     public int size() {
         
         return numStored;
 
     }
-
 
     public T get(int index) throws IndexOutOfBoundsException {
 
@@ -90,11 +125,11 @@ public class ComboList<T> {
         stepper.getData().add(index, value);
 
             if (stepper.getNext() != null) { //if the stepper next node is not null
-                if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity
+                if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity (put this ontop level)
                     if (stepper.getNext().getData().size() < this.nodeCapacity ) { //checking to see if the net node has room for another node
-                        Integer placeholderValue = 0; //creating a palceholder intger 
-                        placeholderValue = stepper.getNext().getData().size() - 1;  //the palceholder value is given the value of the size of the last list
-                        stepper.getData().add(0, (T) placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
+                        T placeholderValue; //creating a palceholder intger 
+                        placeholderValue = stepper.getData().get(stepper.getData().size()-1);  //the palceholder value is given the value of the size of the last list
+                        stepper.getNext().getData().add(0, placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
                     }
                 }
                 else {
