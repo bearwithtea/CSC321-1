@@ -19,17 +19,19 @@ public class ComboListDriver {
         }
 
         for (int i = 0; i < combolist.size(); i++) {
-            System.out.println(combolist.get(i));
+            combolist.get(i);
         }
 
-        combolist.sneakPeek();
-        System.out.println(combolist.size());
-        System.out.println(combolist.get(53));
-        //combolist.add(34, 45);
         //combolist.sneakPeek();
+        //System.out.println(combolist.size());
+        //System.out.println(combolist.get(53));
+        combolist.add(39, 1000);
+        combolist.add(40, 45);
+        combolist.sneakPeek();
         combolist.toList();
-        System.out.println(combolist.toString());
+        combolist.toString();
 
+    /*
     }
 
     public static String getsUserInput() {
@@ -115,6 +117,6 @@ public class ComboListDriver {
             for (int i = 0; i < currentSize; i++) {
                 L.add(0);
             } */
+
         }
     }
-} 

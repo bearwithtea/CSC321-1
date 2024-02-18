@@ -93,11 +93,11 @@ public class ComboList<T> {
     public T get(int index) throws IndexOutOfBoundsException {
 
     if (index > numStored - 1 || index < 0) {
-        System.out.println("You input a number greater than your size or zero, try again with a smaller number :-) ");
-        throw(new java.util.NoSuchElementException());
+        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number :-) ");
+        throw(new IndexOutOfBoundsException());
     }
 
-     Node<ArrayList<T>> stepper = this.front;
+    Node<ArrayList<T>> stepper = this.front;
 
         while (index >= stepper.getData().size()) {
 
@@ -110,10 +110,10 @@ public class ComboList<T> {
 
     public boolean add(int index, T value) throws IndexOutOfBoundsException{
 
-        if (index > numStored - 1 || index < 0) {
-            System.out.println("You input a number greater than your size or zero, try again with a smaller number :-) ");
-            throw(new java.util.NoSuchElementException());
-        }
+    if (index > numStored - 1 || index < 0) {
+        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number :-) ");
+        throw(new IndexOutOfBoundsException());
+    }
 
         Node<ArrayList<T>> stepper = this.front;
 
@@ -124,37 +124,18 @@ public class ComboList<T> {
 
         stepper.getData().add(index, value);
 
-            if (stepper.getNext() != null) { //if the stepper next node is not null
-                if (stepper.getData().size() > this.nodeCapacity) { // if the size of the stored arraylist is greater than the capacity (put this ontop level)
-                    if (stepper.getNext().getData().size() < this.nodeCapacity ) { //checking to see if the net node has room for another node
-                        T placeholderValue; //creating a palceholder intger 
-                        placeholderValue = stepper.getData().get(stepper.getData().size()-1);  //the palceholder value is given the value of the size of the last list
-                        stepper.getNext().getData().add(0, placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
-                    }
-                }
-                else {
-                    new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext()); //creating a new node at the next available space
-                    Integer placeholderValue = 0; //creating a palceholder intger 
-                    placeholderValue = stepper.getNext().getData().size() - 1; //the palceholder value is given the value of the size of the last list
-                    stepper.getData().add(0, (T) placeholderValue); //should I be using Reed's defined add method here or the ArrayList add
-                }
-            }
-            return true; //what should i be returning instead?
-    }
+        if (stepper.getData().size() > this.nodeCapacity && stepper.getNext() != null && stepper.getNext().getData().size() < this.nodeCapacity ) { //if the current arraylist has more capacity and the next list is not null and the next node's arraylist has capacity
+                T placeholderValue = stepper.getData().remove(stepper.getData().size()-1); //remove the last digit, and store it in the placeholder value
+                stepper.getNext().getData().add(0, placeholderValue); //add that last digit at the first index of the next node
+        } else { // OTHERWISE, if the next node does not have capacity
+            Node<ArrayList<T>> newNode = new Node<>(new ArrayList<>(), stepper.getNext()); //create a new node of type arraylist<t> called new node
+            T placeholderValue = stepper.getData().remove(stepper.getData().size()-1); //remove the last digit, and store it in the placeholder value
+            newNode.getData().add(0, placeholderValue); //add that last digit to newnode at index 0
+            stepper.setNext(newNode); //set the next node to the new node!
+        }
 
-        /*
-        * if (stepper.getNext != null)
-        * if (stepper.getData.size() > this.capacity)
-         * if (stepper.getNext.getSize < this.capacity ())
-         * placementvalue = 0;
-         * placementvalue = get arraylist.size - 1
-         * stepper.getData().add(0, placementvalue)
-         * else {
-         * (new Node<ArrayList<T>>(new ArrayList<T>(), stepper.getNext));
-         * stepper.setNext();
-         * add to the next node
-         * }
-         */
+        return true; //is this what i should be returning???
+    }
 
     public List<T> toList() {
 
