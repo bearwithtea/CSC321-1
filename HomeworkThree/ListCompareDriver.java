@@ -6,21 +6,26 @@ import java.util.Scanner;
 public class ListCompareDriver {
 
 //add error checking :)
+    private static Scanner scanner = new Scanner(System.in);
+    private static StopWatch stopWatch = new StopWatch();
+
     public static void main(String[] args) throws Exception {
+
         String userInput = getsUserInput();
         Integer getsStartingSize = getsStartingSize();
         Integer getsMaxSize = getsMaxSize();
 
         if (userInput.startsWith("a") || userInput.startsWith("A")) {
             ArrayList<Integer> testArrayQueue = new ArrayList<Integer>();
-            increaseUntilMax(testArrayQueue, null, getsStartingSize, getsMaxSize());
+            increaseUntilMaxforList(testArrayQueue, getsStartingSize, getsStartingSize);
         } else if (userInput.startsWith("l") || userInput.startsWith("L")) {
             LinkedList<Integer> testLinkedList = new LinkedList<Integer>();
-            increaseUntilMax(testLinkedList, null, getsStartingSize, getsMaxSize());
+            increaseUntilMaxforList(testLinkedList, getsStartingSize, getsStartingSize);
         } else {
             ComboList<Integer> testComboList = new ComboList<Integer>(10);
-            increaseUntilMax(null, testComboList, getsStartingSize, getsMaxSize());
+            increaseUntilMaxforCombo(testComboList, getsStartingSize, getsMaxSize());
         }
+        scanner.close();
     }
 
 
@@ -42,7 +47,6 @@ public class ListCompareDriver {
     }
 
     public static Integer getsStartingSize() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like for the structure to start at: ");
 
         while (!scanner.hasNextInt()) {
@@ -51,12 +55,12 @@ public class ListCompareDriver {
         }  
 
         Integer startingSize = scanner.nextInt();
+        scanner.nextLine();
         return startingSize;
 
     }
 
     public static Integer getsMaxSize() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("What is your maximum size: ");
 
         while (!scanner.hasNextInt()) { //how do i make sure that the starting size is less than max size if max size is defined here
@@ -66,25 +70,22 @@ public class ListCompareDriver {
         }
 
         Integer doublingSizeUntil = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         return doublingSizeUntil;
         
     }
 
-    public static void increaseUntilMax(List<Integer> L, ComboList<Integer> comboList, Integer getsStartingSize, Integer getsMaxSize) {
+    public static void increaseUntilMaxforList(List<Integer> L, Integer getsStartingSize, Integer getsMaxSize) {
         for (int i = 0; i < getsStartingSize; i++){
             L.add(getsStartingSize);
-            comboList.add(getsStartingSize);
         }
 
-        StopWatch stopWatch = new StopWatch();
         long elapsedTime = 0;
 
         while (L.size() < getsMaxSize) {
             stopWatch.start();
             for (int i = 0; i < getsMaxSize; i++) {
                 L.get(i);
-                comboList.get(i);
             }
             stopWatch.stop();
             elapsedTime = stopWatch.getElapsedTime();
@@ -92,4 +93,24 @@ public class ListCompareDriver {
 
         }
     }
+
+    public static void increaseUntilMaxforCombo(ComboList<Integer> testComboList, Integer getsStartingSize, Integer getsMaxSize) {
+        for (int i = 0; i < getsStartingSize; i++){
+            testComboList.add(getsStartingSize); //how do i do these in the same method?
+        }
+
+        long elapsedTime = 0;
+
+        while (testComboList.size() < getsMaxSize) {
+            stopWatch.start();
+            for (int i = 0; i < getsMaxSize; i++) {
+                testComboList.get(i);
+            }
+            stopWatch.stop();
+            elapsedTime = stopWatch.getElapsedTime();
+            System.out.println("Size: " + testComboList.size() + " Time: " + elapsedTime);
+
+        }
+    }
+
 }
