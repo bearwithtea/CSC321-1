@@ -124,18 +124,17 @@ public class ComboList<T> {
 
         stepper.getData().add(index, value);
 
-        if (stepper.getData().size() > this.nodeCapacity && stepper.getNext() != null) { //if the current arraylist has more capacity and the next node is not null and the next node's arraylist has capacity
-            if (stepper.getNext().getData().size() < this.nodeCapacity ) {
-                T placeholderValue = stepper.getData().get(stepper.getData().size()-1); //remove the last digit, and store it in the placeholder value
-                stepper.getNext().getData().add(0, placeholderValue); //add that last digit at the first index of the next node
-            } else { // OTHERWISE, if the next node does not have capacity
-                Node<ArrayList<T>> newNode = new Node<>(new ArrayList<>(), stepper.getNext()); //create a new node of type arraylist<t> called new node
-                T placeholderValue = stepper.getData().remove(stepper.getData().size()-1); //remove the last digit, and store it in the placeholder value
-                newNode.getData().add(0, placeholderValue); //add that last digit to newnode at index 0
-                stepper.setNext(newNode); //set the next node to the new node!
+        if (stepper.getData().size() > this.nodeCapacity) { 
+            T placeholderValue = stepper.getData().remove(stepper.getData().size()-1);
+            if (stepper.getNext() != null && stepper.getNext().getData().size() < this.nodeCapacity) {
+                stepper.getNext().getData().add(0, placeholderValue);
+            } else { 
+                Node<ArrayList<T>> newNode = new Node<>(new ArrayList<>(), stepper.getNext());
+                newNode.getData().add(0, placeholderValue);
+                stepper.setNext(newNode); 
             }
-        } 
-        return true; //is this what i should be returning???
+        }
+        return true;
     }
 
     public List<T> toList() {
