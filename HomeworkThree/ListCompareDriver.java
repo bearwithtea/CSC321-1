@@ -13,14 +13,11 @@ public class ListCompareDriver {
         int startingSize = getsStartingSize();
         int maxSize = getsMaxSize(startingSize);
 
-        ArrayList<Integer> testArrayQueue = new ArrayList<Integer>();
-        increaseUntilMaxforList(testArrayQueue, startingSize, maxSize);
-        LinkedList<Integer> testLinkedList = new LinkedList<Integer>();
-        increaseUntilMaxforList(testLinkedList, startingSize, maxSize);
-        ComboList<Integer> testComboList = new ComboList<Integer>(10);
-        increaseUntilMaxforCombo(testComboList, startingSize, maxSize);
+        increaseUntilMax(startingSize, maxSize);
 
     }
+    
+    //getbigger than method, give it a number, if it is positive, give it a starting size, 
 
     public static Integer getsStartingSize() {   
         System.out.println("What would you like for the structure to start at: ");
@@ -34,54 +31,64 @@ public class ListCompareDriver {
         return startingSize;
     }
 
-    public static Integer getsMaxSize(int startingSize) {
-        System.out.println("What is your maximum size: "); 
-        int maxSize = scanner.nextInt();
+    public static Integer getsMaxSize(int startingSize) {   
+        System.out.println("What would you like for the max size to be: ");
+        int maxSize = scanner.nextInt(); 
         scanner.nextLine();
-    
+
         if (maxSize <= startingSize) {
-            System.out.println("You have input a number smaller than your starting size, please try again");
+            System.out.println("You have input a negative number or a zero");
             return getsMaxSize(startingSize);
         }
         return maxSize;
     }
 
-    public static void increaseUntilMaxforList(List<Integer> L, Integer getsStartingSize, Integer getsMaxSize) {
-        for (int i = 0; i < getsStartingSize; i++){
-            L.add(getsStartingSize);
-        }
+    public static void increaseUntilMax(Integer getsStartingSize, Integer getsMaxSize) {
 
-        long elapsedTime = 0;
+        long elapsedTimeArray = 0;
+        long elapsedTimeLinked = 0;
+        long elapsedTimeCombo = 0;
 
-        while (L.size() < getsMaxSize) {
-            stopWatch.start();
-            for (int i = 0; i < getsMaxSize; i++) {
-                L.get(i);
-            }
-            stopWatch.stop();
-            elapsedTime = stopWatch.getElapsedTime();
-            System.out.println("Size: " + L.size() + " Time: " + elapsedTime);
+        ArrayList<Integer> testArrayList = new ArrayList<Integer>();
+        LinkedList<Integer> testLinkedList = new LinkedList<Integer>();
+        ComboList<Integer> testComboList = new ComboList<Integer>(10);
+
+        while (getsStartingSize < getsMaxSize) {
+            while (testArrayList.size() < getsStartingSize)
+                {
+                testArrayList.add(getsStartingSize);
+                testLinkedList.add(getsStartingSize);
+                testComboList.add(getsStartingSize);
+                }
+
+                stopWatch.start();
+                for (int i = 0; i < getsStartingSize; i++) {
+                    testArrayList.get(i);
+                }
+                stopWatch.stop();
+                elapsedTimeArray = stopWatch.getElapsedTime();
+
+                stopWatch.start();
+                for (int i = 0; i < getsStartingSize; i++) {
+                    testLinkedList.get(i);
+                }
+                stopWatch.stop();
+                elapsedTimeLinked = stopWatch.getElapsedTime();
+
+                stopWatch.start();
+                for (int i = 0; i < getsStartingSize; i++) {
+                    testComboList.get(i);
+                }
+                stopWatch.stop();
+                elapsedTimeCombo = stopWatch.getElapsedTime();
+
+                getsStartingSize = getsStartingSize * 2;
+
+                System.out.println("Size for ArrayList: " + testArrayList.size() + " Time: " + elapsedTimeArray);
+                System.out.println("Size for LinkedList: " + testLinkedList.size() + " Time: " + elapsedTimeLinked);
+                System.out.println("Size for ComboList: " + testComboList.size() + " Time: " + elapsedTimeCombo);
+                System.out.println("");
 
         }
     }
-
-    public static void increaseUntilMaxforCombo(ComboList<Integer> testComboList, Integer getsStartingSize, Integer getsMaxSize) {
-        for (int i = 0; i < getsStartingSize; i++){
-            testComboList.add(getsStartingSize); //how do i do these in the same method?
-        }
-
-        long elapsedTime = 0;
-
-        while (testComboList.size() < getsMaxSize) {
-            stopWatch.start();
-            for (int i = 0; i < getsMaxSize; i++) {
-                testComboList.get(i);
-            }
-            stopWatch.stop();
-            elapsedTime = stopWatch.getElapsedTime();
-            System.out.println("Size: " + testComboList.size() + " Time: " + elapsedTime);
-
-        }
-    }
-
 }
