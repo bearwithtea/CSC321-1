@@ -93,7 +93,7 @@ public class ComboList<T> {
     public T get(int index) throws IndexOutOfBoundsException {
 
     if (index > numStored - 1 || index < 0) {
-        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number :-) ");
+        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number. ");
         throw(new IndexOutOfBoundsException());
     }
 
@@ -111,7 +111,7 @@ public class ComboList<T> {
     public boolean add(int index, T value) throws IndexOutOfBoundsException{
 
     if (index > numStored - 1 || index < 0) {
-        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number :-) ");
+        System.out.println("You input a number greater than your specified size or zero, try again with a smaller number. ");
         throw(new IndexOutOfBoundsException());
     }
 
