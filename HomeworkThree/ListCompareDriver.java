@@ -54,7 +54,7 @@ public class ListCompareDriver {
         scanner.nextLine();
 
         if (maxSize <= startingSize) {
-            System.out.println("You have input a negative number or a zero");
+            System.out.println("You have input a number less than your starting size.");
             return getsMaxSize(startingSize);
         }
         return maxSize;

@@ -3,7 +3,7 @@ public class ComboListDriver {
 
         ComboList<Integer> combolist = new ComboList<Integer>(10);
         
-        for (int i = 0; i <= 93; i++) {
+        for (int i = 0; i <= 97; i++) {
             combolist.add(i);
         }
 
@@ -11,13 +11,13 @@ public class ComboListDriver {
             combolist.get(i);
         }
 
-        combolist.sneakPeek();
-        System.out.println(combolist.size());
-        System.out.println(combolist.get(53));
-        combolist.add(39, 1000);
-        combolist.add(40, 45);
-        combolist.add(43, 44);
-        combolist.add(44, 431123984);
+        System.out.println("");
+        combolist.size();
+        combolist.get(53);
+        combolist.add(39, 111);
+        combolist.add(41, 222);
+        combolist.add(94, 333);
+        combolist.add(99, 444);
         combolist.sneakPeek();
         combolist.toList();
         combolist.toString();
