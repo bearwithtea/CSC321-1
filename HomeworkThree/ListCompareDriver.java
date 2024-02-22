@@ -3,22 +3,34 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This is a class that takes a combolist, arraylist, and linkedlist and takes user input of initial size and max size and then times them while each list doubles. Then it prints it out in a readable format
+ * @author Owen McGrath
+ * @version 2/15/2023
+ */
 public class ListCompareDriver {
 
     private static Scanner scanner = new Scanner(System.in);
     private static StopWatch stopWatch = new StopWatch();
 
+    /**
+     * Main method that creates starting size and maxsize.
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         int startingSize = getsStartingSize();
         int maxSize = getsMaxSize(startingSize);
 
-        increaseUntilMax(startingSize, maxSize);
+        increasesUntilMax(startingSize, maxSize);
 
     }
     
-    //getbigger than method, give it a number, if it is positive, give it a starting size, 
-
+    /**
+     * This is a method that gets the user input for what they want the structure to start at. If it is a negative number or zero, it will reprompt them
+     * @return startingSize
+     */
     public static Integer getsStartingSize() {   
         System.out.println("What would you like for the structure to start at: ");
         int startingSize = scanner.nextInt(); 
@@ -31,6 +43,11 @@ public class ListCompareDriver {
         return startingSize;
     }
 
+    /**
+     * This is a method that gets user input for what they want the structure to start at. If the number is less than or equal to the starting size, then it will reprompt them
+     * @param startingSize
+     * @return maxSize
+     */
     public static Integer getsMaxSize(int startingSize) {   
         System.out.println("What would you like for the max size to be: ");
         int maxSize = scanner.nextInt(); 
@@ -43,7 +60,12 @@ public class ListCompareDriver {
         return maxSize;
     }
 
-    public static void increaseUntilMax(Integer getsStartingSize, Integer getsMaxSize) {
+    /**
+     * This is a method that takes in the starting size and maxsize, and then creates an arraylist, combolist, and linkedlist. While the starting size is less than the max size and one of the list sizes is less than the starting size, a timer is stopped and started for get methods equal to the size of the list. After that, the count is doubled and the list repeats while the size of the arraylist is smaller than the starting size.
+     * @param getsStartingSize
+     * @param getsMaxSize
+     */
+    public static void increasesUntilMax(Integer getsStartingSize, Integer getsMaxSize) {
 
         long elapsedTimeArray = 0;
         long elapsedTimeLinked = 0;
