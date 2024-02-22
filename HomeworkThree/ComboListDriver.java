@@ -1,9 +1,9 @@
 public class ComboListDriver {
     public static void main(String[] args) throws Exception {
 
-        ComboList<Integer> combolist = new ComboList<Integer>(100);
+        ComboList<Integer> combolist = new ComboList<Integer>(10);
         
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i <= 93; i++) {
             combolist.add(i);
         }
 
@@ -16,11 +16,11 @@ public class ComboListDriver {
         System.out.println(combolist.get(53));
         combolist.add(39, 1000);
         combolist.add(40, 45);
-        combolist.add(99, 44);
-        combolist.add(95, 431123984);
+        combolist.add(43, 44);
+        combolist.add(44, 431123984);
         combolist.sneakPeek();
-        System.out.println(combolist.toList());
-        System.out.println(combolist.toString());
+        combolist.toList();
+        combolist.toString();
 
     }
 }
