@@ -153,6 +153,10 @@ public class ComboList<T> {
         return true;
     }
 
+    /**
+     * This is a method that, while the stepper is not pointing to a null, iterates through the list and then adds all to a list.
+     * @return outputList
+     */
     public List<T> toList() {
 
         List<T> outputList = new ArrayList<T>();
@@ -167,6 +171,10 @@ public class ComboList<T> {
 
     }  
 
+    /**
+     * This is a method that converts the list to a string
+     * @return a string version of the list
+     */
     public String toString() {
         return this.toList().toString();
     }
