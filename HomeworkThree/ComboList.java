@@ -86,6 +86,7 @@ public class ComboList<T> {
 
     /**
      * Returns the size of the list by using the amount of nodes stored.
+     * O(1)
      * @return numStored;
      */
     public int size() {
@@ -96,6 +97,7 @@ public class ComboList<T> {
 
     /**
      * This is a method that, while the index is not a negative number or zero, and the index is greater than the current size of the arraylist, iterates through the nodes, reducing the amount by the size of the arraylist, until it reaches the correct index
+     * O(N)
      * @return stepper.getData().get(index); or, in non-brainhurty terms, the current nodes arraylist index
      */
     public T get(int index) throws IndexOutOfBoundsException {
@@ -119,6 +121,7 @@ public class ComboList<T> {
     /**
      * pain
      * This is a method that took a year off of my lifespan and also checks user input for a non-negative or zero number. If that is provided, then it deals with three cases: adding a number to an arraylist with capacity, adding a number to the next arraylist if the current one is full, and then adding an new node if all others are full.
+     * O(N) bc while loop
      * @param index
      * @param value
      * @return true
@@ -155,6 +158,7 @@ public class ComboList<T> {
 
     /**
      * This is a method that, while the stepper is not pointing to a null, iterates through the list and then adds all to a list.
+     * O(N) bc while loop :P
      * @return outputList
      */
     public List<T> toList() {
@@ -173,6 +177,7 @@ public class ComboList<T> {
 
     /**
      * This is a method that converts the list to a string
+     * O(N)
      * @return a string version of the list
      */
     public String toString() {
