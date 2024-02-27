@@ -12,8 +12,8 @@ public class ComboListDriver {
         }
 
         System.out.println("");
-        combolist.size();
-        combolist.get(53);
+        System.out.println(combolist.size());
+        System.out.println(combolist.get(53));
         combolist.add(39, 111);
         combolist.add(41, 222);
         combolist.add(94, 333);
