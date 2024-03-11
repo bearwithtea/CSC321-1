@@ -9,35 +9,39 @@ Inductive:
 Assume this statement is true for all k < K
     2^(K+1)
     2^(K-1) + 1
-    2^K * 2
-    2^k+1
+    2^(K + 2)
 
- Through the maxim of modus ponens, we are able to confidently say that this
- rule follows for k+1.
+Therefore, 2^(k+1).
 
 8.13
 
 a. if n > 0, f(n) = 1 + n/2. Otherwise, f(n) = 0
 
 b.
-Base Case: We assume that N = 0, which returns N < 0.
-Hypothesis: We then assume that n > 0
+Base Case: We assume that n = 0, which returns n < 0.
+Hypothesis: We then assume that n < N
 Inductive: n > 0 returns f(n) = 1 + n/2
 
 c.
-This complexity for halfIt(n) would be Cost(N) = Cost (N) + C which means O(N)
+This complexity for halfIt(n) would be Cost(N) = Cost (N/2) + C because the n is being halved if the number is greater than zero, which we determined in our hypothesis.
+
+1. Cost (N/2) + C
+2. Cost (N/4) + 2C
+3. Cost (N/8) + 3C
+4. Cost (N/16) + 4C
+
+Eventually, this becomes N(Log N)
 
 8.15 
 
 Assuming the priests can move one disk per second, that they started moving
 disks 6000 years ago, and that the legend of the Towers of Hanoi is true, when will the world end?
 
-5,873???
+The minimum number of moves can be determined with the formula 2^(N-1), which indicates that there is a minimum of 9.2233720369E18 moves. There has ben 189,216,000,000 seconds since the game started, which means that the world will end in 9.2233718477E18 seconds or 
+2.9090514808E26 years.
 
 9.4
-Base Case:
-Hypothesis:
-Inductive:
+
 
 9.11
 Base Case:
