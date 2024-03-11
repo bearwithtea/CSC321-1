@@ -1,16 +1,19 @@
 Homework 4 - Problem Set
 
 8.4
-Prove that the number of binary palindromes of length 2k+ 1 (odd length) is 2^k+1
-for all k ≥ 0.
+Prove that the number of binary palindromes of length 2k+ 1 (odd length) is 2^(k+1) for all k ≥ 0.
 
-Base Case: Since 2^0+1 is equal to two, which is greater than 0, P(0) is clearly true. //have to assume smallest number.
-Hypothesis: Assuming that p(k) is true, there are 2^k+1 binary palindromes of length 2k+1
+Base Case: Since 2^(0+1) is equal to two, this matches all possibilities for all 1 bit palindromes.
+Hypothesis: Assuming that p(k) is true, there are 2^(k+1) binary palindromes of length 2k+1
 Inductive:
-Assume that P(K) is true for any number greater than zero.
-    If k = 0, then there are two binary palindromes of length 1, either 0 or 1.
-    If k = 1, then there are four binary palinromes of length 2, 00, 01, 10, 11.
- Through the maxim of modus ponens, we are able to confidently say that this rule follows for k+1.
+Assume this statement is true for all k < K
+    2^(K+1)
+    2^(K-1) + 1
+    2^K * 2
+    2^k+1
+
+ Through the maxim of modus ponens, we are able to confidently say that this
+ rule follows for k+1.
 
 8.13
 
@@ -24,10 +27,12 @@ Inductive: n > 0 returns f(n) = 1 + n/2
 c.
 This complexity for halfIt(n) would be Cost(N) = Cost (N) + C which means O(N)
 
-8.15
-Base Case:
-Hypothesis:
-Inductive:
+8.15 
+
+Assuming the priests can move one disk per second, that they started moving
+disks 6000 years ago, and that the legend of the Towers of Hanoi is true, when will the world end?
+
+5,873???
 
 9.4
 Base Case:
