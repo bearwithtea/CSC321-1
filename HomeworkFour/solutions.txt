@@ -41,12 +41,12 @@ The minimum number of moves can be determined with the formula 2^(N-1), which in
 2.9090514808E26 years.
 
 9.4
-
+26^5 = 11,881,376
 
 9.11
-Base Case:
-Hypothesis:
-Inductive:
+
+Smallest: (18, 1) Shoul this be zero?
+Largest: (18, 9) //Needs to be the half of the n.
 
 9.16
 Base Case:
