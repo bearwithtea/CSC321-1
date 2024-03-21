@@ -1,13 +1,6 @@
-
-/*
- * @author Owen McGrath
- * @version 3/21/2024
- * This is a class that instantiates a trie and a boolean value representing a flag. 
- */
-public class TrieNode {
+class TrieNode {
+    int possibleLetters = 26;
     boolean isWord;
-    TrieNode [] edges = new TrieNode[26];
+    Trie [] edges = new Trie[possibleLetters]; //no magic numbers, right? -> creating all possible edges
 }
-
-
 
