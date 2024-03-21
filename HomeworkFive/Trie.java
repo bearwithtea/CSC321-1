@@ -8,10 +8,10 @@
 import java.util.ArrayList;
 
 public class Trie {
-    private TrieNode root; //root node
+    private TrieNode root; //creating root node
 
     public Trie () {
-        root = new TrieNode(); //creating trieNode object
+        root = new TrieNode(); //instantiattingng root object
 
         for (int i = 0; i < root.possibleLetters; i++) {
             root.edges[i] = null; //setting all edges to null
