@@ -44,6 +44,10 @@ public class Trie {
         return true;
     }
 
+    /**
+     * @param word
+     * @return currentNode.isWordorPre
+     */
     public boolean contains(String word) {
 
         TrieNode currentNode = root;
@@ -95,8 +99,9 @@ public class Trie {
     public int size() {
 
         count = 0;
-        iterateTrie(root);
+        iterateTrie(root); //recursively calling the helper method
         return count;
+
         }
     }
 
