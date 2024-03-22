@@ -1,11 +1,11 @@
 class TrieNode {
     int possibleLetters = 26;
-    boolean isWord;
-    public TrieNode [] edges;
+    boolean isWordorPre;
+    public TrieNode [] nodesArray; //makes more sens eot mne if I call it nodesArray, can change it back if need be.
 
     public TrieNode() {
-        edges = new TrieNode[possibleLetters]; //no magic numbers, right? -> creating all possible edges
-        isWord = false;
+        nodesArray = new TrieNode[possibleLetters]; //no magic numbers, right? -> creating all possible edges
+        isWordorPre = false;
     }
 
 }
