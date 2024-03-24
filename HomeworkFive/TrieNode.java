@@ -7,6 +7,5 @@ class TrieNode {
         nodesArray = new TrieNode[possibleLetters]; //no magic numbers, right? -> creating all possible edges
         isWordorPre = false;
     }
-
 }
 

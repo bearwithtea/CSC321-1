@@ -1,9 +1,15 @@
 import java.util.Scanner;
 import java.io.File;
+
+/**
+ * @author Owen McGrath 3/21/2024
+ * A class that acts as a driver for testing methods and getting user input
+ */
 public class TrieDriver {
     public static void main(String[] args) throws java.io.FileNotFoundException {
         Scanner file = new Scanner(new File("dictionary.txt"));
         Trie trie = new Trie();
+        Scanner scanner = new Scanner(System.in); 
 
 
         long beforeAdd = Runtime.getRuntime().freeMemory();
@@ -16,8 +22,8 @@ public class TrieDriver {
 
         System.out.println("memory (add) (MB): " + (beforeAdd-afterAdd)/1e6);
         System.out.println("time (add) (sec): " + (endTimeAdd-startTimeAdd)/1e3);
+        System.out.println("The number of words in the trie is: " + trie.size());
 
-        Scanner scanner = new Scanner(System.in); 
         System.out.println("What word or prefix would you like to search?");
         String wordOrPre = scanner.nextLine();
 
@@ -28,6 +34,5 @@ public class TrieDriver {
         } else {
             System.out.println("That is neither a word nor a prefix");
         }
-
     }
 }

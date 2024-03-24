@@ -7,8 +7,8 @@
 
 public class Trie {
 
-    private TrieNode root; //creating root node
-    int count = 0;
+    protected TrieNode root; //creating root node
+    int size = 0;
 
     public Trie () {
         root = new TrieNode(); //instantiattingng root object
@@ -33,10 +33,11 @@ public class Trie {
             char currentLetter = word.charAt(i);
             int index = currentLetter - 'a'; //converting into unicode.
 
-            if (currentNode.nodesArray[index] == null) {
+            if (currentNode.nodesArray[index] == null) { 
                 currentNode.nodesArray[index] = new TrieNode(); //have top create a new node if there is no other node already there
             }
             currentNode = currentNode.nodesArray[index];
+            size++;
         }
 
         currentNode.isWordorPre = true; //sets the flag to true at the end of the word.
@@ -66,6 +67,11 @@ public class Trie {
         return currentNode.isWordorPre; //marks the flag if the word is in the trie
     }
 
+    /**
+     * 
+     * @param pre
+     * @return the flag of whether or not it is a prefix or not
+     */
     public boolean containsPrefix(String pre) {
 
         TrieNode currentNode = root;
@@ -80,27 +86,16 @@ public class Trie {
             currentNode = currentNode.nodesArray[index];
         }
 
-        return currentNode.isWordorPre;
+        return true;
     }
 
-    private void iterateTrie(TrieNode node) {
-
-        if (node == null) {
-            return; //base case...?
-        }
-
-        count++; //need to count nodes before cointinhg their children
-
-        for (TrieNode childNodes : node.nodesArray) { //counts each child for a node's children
-            iterateTrie(childNodes);
-        }
-    }
-
+    /**
+     * @return size
+     * returns the size that is incremented each time something is added via the add method
+     */
     public int size() {
 
-        count = 0;
-        iterateTrie(root); //recursively calling the helper method
-        return count;
+        return size;
 
         }
     }
