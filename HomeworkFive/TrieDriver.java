@@ -10,7 +10,7 @@ public class TrieDriver {
         Scanner file = new Scanner(new File("dictionary.txt"));
         Trie trie = new Trie();
         Scanner scanner = new Scanner(System.in); 
-
+        String wordOrPre;
 
         long beforeAdd = Runtime.getRuntime().freeMemory();
         long startTimeAdd = System.currentTimeMillis();
@@ -24,15 +24,22 @@ public class TrieDriver {
         System.out.println("time (add) (sec): " + (endTimeAdd-startTimeAdd)/1e3);
         System.out.println("The number of words in the trie is: " + trie.size());
 
-        System.out.println("What word or prefix would you like to search?");
-        String wordOrPre = scanner.nextLine();
+        do { 
+            System.out.println("What word or prefix would you like to search?");
+            wordOrPre = scanner.nextLine();
 
-        if (trie.contains(wordOrPre)) {
-            System.out.println(wordOrPre + " is a word!");
-        } else if (trie.containsPrefix(wordOrPre)) {
-            System.out.println(wordOrPre + " is a prefix!");
-        } else {
-            System.out.println("That is neither a word nor a prefix");
-        }
+            if (wordOrPre == ""){ //if the user hits enter, then break the loop!
+                break;
+            }
+
+            if (trie.contains(wordOrPre)) {
+                System.out.println(wordOrPre + " is a word!");
+            } else if (trie.containsPrefix(wordOrPre)) {
+                System.out.println(wordOrPre + " is a prefix!");
+            } else {
+                System.out.println("That is neither a word nor a prefix");
+            } 
+
+        } while (true);
     }
 }

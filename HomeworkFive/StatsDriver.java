@@ -16,7 +16,7 @@ public class StatsDriver {
 	  long before=Runtime.getRuntime().freeMemory();
 	  // ArrayList<String> words = new ArrayList<String>();
 	  // LinkedList<String> words = new LinkedList<String>();
-		TreeSet<String> words = new TreeSet<String>();
+	   TreeSet<String> words = new TreeSet<String>();
 	  while (input.hasNext()) {
 		  words.add(input.next());
 	  }

@@ -26,48 +26,35 @@ public class ListCompareDriver {
         increasesUntilMax(startingSize, maxSize);
 
     }
-
+    
     /**
-     * This is a method that gets the user input for what they want the structure to start at. If it is a negative number or zero, it will reprompt them. It will also reprompt them for a decimal or non-integer.
+     * This is a method that gets the user input for what they want the structure to start at. If it is a negative number or zero, it will reprompt them
      * @return startingSize
      */
-
-    public static Integer getsStartingSize() {
+    public static Integer getsStartingSize() {   
         System.out.println("What would you like for the structure to start at: ");
-        int startingSize;
-        if (scanner.hasNextInt()) {
-            startingSize = scanner.nextInt();
-            scanner.nextLine();
-            if (startingSize < 1) {
-                System.out.println("You have input a negative number or a zero");
-                return getsStartingSize();
-            }
-        } else {
-            System.out.println("You have input a non-integer");
-            scanner.nextLine();
+        int startingSize = scanner.nextInt(); 
+        scanner.nextLine();
+
+        if (startingSize < 1) {
+            System.out.println("You have input a negative number or a zero");
             return getsStartingSize();
         }
         return startingSize;
     }
 
     /**
-     * This is a method that gets user input for what they want the structure to start at. If the number is less than or equal to the starting size, then it will reprompt them. It will also reprompt them for a decimal or non-integer.
+     * This is a method that gets user input for what they want the structure to start at. If the number is less than or equal to the starting size, then it will reprompt them
      * @param startingSize
      * @return maxSize
      */
-    public static Integer getsMaxSize(int startingSize) {
+    public static Integer getsMaxSize(int startingSize) {   
         System.out.println("What would you like for the max size to be: ");
-        int maxSize;
-        if (scanner.hasNextInt()) {
-            maxSize = scanner.nextInt();
-            scanner.nextLine();
-            if (maxSize <= startingSize) {
-                System.out.println("You have input a number less than your starting size.");
-                return getsMaxSize(startingSize);
-            }
-        } else {
-            System.out.println("You have input a non-integer");
-            scanner.nextLine();
+        int maxSize = scanner.nextInt(); 
+        scanner.nextLine();
+
+        if (maxSize <= startingSize) {
+            System.out.println("You have input a number less than your starting size.");
             return getsMaxSize(startingSize);
         }
         return maxSize;

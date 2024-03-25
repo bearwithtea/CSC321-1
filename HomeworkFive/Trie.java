@@ -13,8 +13,8 @@ public class Trie {
     public Trie () {
         root = new TrieNode(); //instantiattingng root object
 
-        for (int i = 0; i < root.possibleLetters; i++) {
-            root.nodesArray[i] = null; //setting all edges to null so that they exist but don't have nything in them
+        for (int i = 0; i < root.getPossibleLetters(); i++) {
+            root.getEdges()[i] = null; //setting all edges to null so that they exist but don't have nything in them -> move this to the TrieNode class
         }
     }
 
@@ -33,14 +33,14 @@ public class Trie {
             char currentLetter = word.charAt(i);
             int index = currentLetter - 'a'; //converting into unicode.
 
-            if (currentNode.nodesArray[index] == null) { 
-                currentNode.nodesArray[index] = new TrieNode(); //have top create a new node if there is no other node already there
+            if (currentNode.getEdges()[index] == null) { 
+                currentNode.getEdges()[index] = new TrieNode(); //have top create a new node if there is no other node already there
             }
-            currentNode = currentNode.nodesArray[index];
-            size++;
+            currentNode = currentNode.getEdges()[index];
         }
+        size++;
 
-        currentNode.isWordorPre = true; //sets the flag to true at the end of the word.
+        currentNode.setWordorPre(true); //sets the flag to true at the end of the word.
 
         return true;
     }
@@ -57,14 +57,14 @@ public class Trie {
             char currentLetter = word.charAt(i);
             int index = currentLetter - 'a';
 
-            if (currentNode.nodesArray[index] == null) {
+            if (currentNode.getEdges()[index] == null) {
                 return false; //if none of the edges are in the trie, then return false
             }
 
-            currentNode = currentNode.nodesArray[index];
+            currentNode = currentNode.getEdges()[index];
 
         }
-        return currentNode.isWordorPre; //marks the flag if the word is in the trie
+        return currentNode.getWordorPre(); //marks the flag if the word is in the trie
     }
 
     /**
@@ -80,10 +80,10 @@ public class Trie {
             char currentLetter = pre.charAt(i);
             int index = currentLetter - 'a';
 
-            if (currentNode.nodesArray[index] == null) {
+            if (currentNode.getEdges()[index] == null) {
                 return false;
             }
-            currentNode = currentNode.nodesArray[index];
+            currentNode = currentNode.getEdges()[index];
         }
 
         return true;
