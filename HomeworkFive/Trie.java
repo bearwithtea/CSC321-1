@@ -11,7 +11,7 @@ public class Trie {
     int size = 0;
 
     public Trie () {
-        root = new TrieNode(); //instantiattingng root object
+        root = new TrieNode(); //instantiaing root object
 
         for (int i = 0; i < root.getPossibleLetters(); i++) {
             root.getEdges()[i] = null; //setting all edges to null so that they exist but don't have nything in them -> move this to the TrieNode class
