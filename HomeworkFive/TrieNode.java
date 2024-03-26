@@ -15,6 +15,7 @@ class TrieNode {
         return edges;
     }
 
+    
     public void setEdges(TrieNode[] edges) {
         this.edges = edges;
     }
