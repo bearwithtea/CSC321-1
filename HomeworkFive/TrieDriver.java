@@ -29,6 +29,7 @@ public class TrieDriver {
             wordOrPre = scanner.nextLine();
 
             if (wordOrPre == ""){ //if the user hits enter, then break the loop!
+                System.out.println("Thank you for using my program, have a wonderful day!");
                 break;
             }
 
