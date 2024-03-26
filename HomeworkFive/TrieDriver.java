@@ -1,13 +1,12 @@
 import java.util.Scanner;
 import java.io.File;
-
 /**
  * @author Owen McGrath 3/21/2024
  * A class that acts as a driver for testing methods and getting user input
  */
 public class TrieDriver {
     public static void main(String[] args) throws java.io.FileNotFoundException {
-        
+
         Scanner file = new Scanner(new File("dictionary.txt"));
         Trie trie = new Trie();
         Scanner scanner = new Scanner(System.in); 
@@ -15,6 +14,7 @@ public class TrieDriver {
 
         long beforeAdd = Runtime.getRuntime().freeMemory();
         long startTimeAdd = System.currentTimeMillis();
+        
         while (file.hasNext()) {
             trie.add(file.next());
         }
