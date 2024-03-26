@@ -7,6 +7,7 @@ import java.io.File;
  */
 public class TrieDriver {
     public static void main(String[] args) throws java.io.FileNotFoundException {
+        
         Scanner file = new Scanner(new File("dictionary.txt"));
         Trie trie = new Trie();
         Scanner scanner = new Scanner(System.in); 
@@ -17,6 +18,7 @@ public class TrieDriver {
         while (file.hasNext()) {
             trie.add(file.next());
         }
+
         long afterAdd = Runtime.getRuntime().freeMemory();
         long endTimeAdd = System.currentTimeMillis();
 
