@@ -24,6 +24,7 @@ public class TrieDriver {
 
         System.out.println("memory (add) (MB): " + (beforeAdd-afterAdd)/1e6);
         System.out.println("time (add) (sec): " + (endTimeAdd-startTimeAdd)/1e3);
+        System.out.println("The number of nodes in the trie is" + trie.nodeSize());
         System.out.println("The number of words in the trie is: " + trie.size());
 
         do { 
@@ -45,4 +46,4 @@ public class TrieDriver {
 
         } while (true);
     }
-}
+} 

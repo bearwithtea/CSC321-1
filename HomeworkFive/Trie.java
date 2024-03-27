@@ -9,6 +9,7 @@ public class Trie {
 
     protected TrieNode root; //creating root node
     int size = 0;
+    int nodeSize = 0;
 
     public Trie () {
         root = new TrieNode(); //instantiaing root object
@@ -37,6 +38,7 @@ public class Trie {
                 currentNode.getEdges()[index] = new TrieNode(); //have top create a new node if there is no other node already there
             }
             currentNode = currentNode.getEdges()[index];
+            nodeSize++;
         }
         size++;
 
@@ -97,6 +99,14 @@ public class Trie {
 
         return size;
 
-        }
     }
+
+    public int nodeSize() {
+
+        return nodeSize();
+        
+    }
+}
+
+
 
