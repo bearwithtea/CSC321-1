@@ -11,39 +11,35 @@ public class TrieDriver {
         Trie trie = new Trie();
         Scanner scanner = new Scanner(System.in); 
         String wordOrPre;
-
-        long beforeAdd = Runtime.getRuntime().freeMemory();
-        long startTimeAdd = System.currentTimeMillis();
         
         while (file.hasNext()) {
             trie.add(file.next());
         }
 
-        long afterAdd = Runtime.getRuntime().freeMemory();
-        long endTimeAdd = System.currentTimeMillis();
-
-        System.out.println("memory (add) (MB): " + (beforeAdd-afterAdd)/1e6);
-        System.out.println("time (add) (sec): " + (endTimeAdd-startTimeAdd)/1e3);
-        System.out.println("The number of nodes in the trie is" + trie.nodeSize());
+        // System.out.println(trie.add(""));
+        // System.out.println(trie.contains(""));
+        
         System.out.println("The number of words in the trie is: " + trie.size());
 
         do { 
             System.out.println("What word or prefix would you like to search?");
             wordOrPre = scanner.nextLine();
 
-            if (wordOrPre == ""){ //if the user hits enter, then break the loop!
-                System.out.println("Thank you for using my program, have a wonderful day!");
-                break;
-            }
+            if (wordOrPre != "") { 
 
-            if (trie.contains(wordOrPre)) {
-                System.out.println(wordOrPre + " is a word!");
-            } else if (trie.containsPrefix(wordOrPre)) {
-                System.out.println(wordOrPre + " is a prefix!");
-            } else {
-                System.out.println("That is neither a word nor a prefix");
-            } 
+                if (trie.contains(wordOrPre)) {
+                    System.out.println(wordOrPre + " is a word!");
+                } else if (trie.containsPrefix(wordOrPre)) {
+                    System.out.println(wordOrPre + " is a prefix!");
+                } else {
+                    System.out.println("That is neither a word nor a prefix");
+                } 
 
-        } while (true);
+            }   
+
+        } while (wordOrPre != "");
+
+        System.out.println("Thank you for using my program, have a wonderful day!");
+
     }
 } 

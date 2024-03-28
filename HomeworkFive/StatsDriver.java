@@ -3,7 +3,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.TreeSet;
-
 /**
  * Driver class that generates stats on an ArrayList storing a dictionary.
  *   @author Dave Reed
@@ -16,7 +15,8 @@ public class StatsDriver {
 	  long before=Runtime.getRuntime().freeMemory();
 	  // ArrayList<String> words = new ArrayList<String>();
 	  // LinkedList<String> words = new LinkedList<String>();
-	   TreeSet<String> words = new TreeSet<String>();
+	  // TreeSet<String> words = new TreeSet<String>();
+		 Trie words = new Trie();
 	  while (input.hasNext()) {
 		  words.add(input.next());
 	  }
