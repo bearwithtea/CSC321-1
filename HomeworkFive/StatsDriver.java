@@ -13,10 +13,10 @@ public class StatsDriver {
 	  Scanner input = new Scanner(new File("dictionary.txt"));
 	  
 	  long before=Runtime.getRuntime().freeMemory();
-	  // ArrayList<String> words = new ArrayList<String>();
+	     ArrayList<String> words = new ArrayList<String>();
 	  // LinkedList<String> words = new LinkedList<String>();
 	  // TreeSet<String> words = new TreeSet<String>();
-		 Trie words = new Trie();
+	  // Trie words = new Trie();
 	  while (input.hasNext()) {
 		  words.add(input.next());
 	  }
