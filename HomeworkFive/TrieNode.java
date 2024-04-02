@@ -4,7 +4,7 @@
  * This is a class that instantiates the edges array,the flag, and then the number of possible letters, as well as gettings and setters for each.
  */
 class TrieNode {
-    private int possibleLetters = 26;
+    private int possibleLetters = 26; // no magic numbers!
     private boolean isWordorPre;
     private TrieNode [] edges;
 

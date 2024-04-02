@@ -16,13 +16,13 @@ public class TrieDriver {
             trie.add(file.next());
         }
 
-        // System.out.println(trie.add(""));
-        // System.out.println(trie.contains(""));
+        System.out.println(trie.remove("car"));
+        System.out.println(trie.contains(""));
         
         System.out.println("The number of words in the trie is: " + trie.size());
 
         do { 
-            System.out.println("What word or prefix would you like to search?");
+            System.out.println("What word or prefix would you like to search? (Key 'enter' to exit the program)");
             wordOrPre = scanner.nextLine();
 
             if (wordOrPre != "") { 

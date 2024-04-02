@@ -9,12 +9,15 @@ public class Trie {
 
     protected TrieNode root; //creating root node
     int size = 0;
+    TrieNode currentNode = root;
 
     public Trie () {
         root = new TrieNode(); //instantiaing root object
 
         for (int i = 0; i < root.getPossibleLetters(); i++) {
-            root.getEdges()[i] = null; //setting all edges to null so that they exist but don't have nything in them -> move this to the TrieNode class
+            root.getEdges()[i] = null; //setting all edges to null so that they exist but don't have nything in them 
+            
+            //TODO: move this to the TrieNode class
         }
     }
 
@@ -23,9 +26,7 @@ public class Trie {
      * @return true
      * Adds a word to the tree 
      **/
-    public boolean add(String word) {
-
-    TrieNode currentNode = root; //sets the indexed node to root, starting point.
+    public boolean add(String word) { //sets the indexed node to root, starting point.
 
         word = word.toLowerCase();
 
@@ -45,13 +46,32 @@ public class Trie {
         return true;
     }
 
+    /* this is actually insane
+    public boolean remove(String word) {
+
+        word = word.toLowerCase();
+
+        for (int i = 0; i < word.length(); i++) {
+            char currentLetter = word.charAt(i);
+            int index = currentLetter - 'a'; //converting into unicode.
+
+            if (currentNode.getEdges()[index] != null) { 
+                currentNode.getEdges()[index] = null; //if the edges aren't null, make them so!
+            }
+            currentNode = root;
+        }
+        size--;
+
+        currentNode.setWordorPre(false);
+
+        return true;
+    } */
+
     /**
      * @param word
      * @return currentNode.isWordorPre
      */
     public boolean contains(String word) {
-
-        TrieNode currentNode = root;
 
         for (int i = 0; i < word.length(); i++ ) {
             char currentLetter = word.charAt(i);
@@ -86,7 +106,7 @@ public class Trie {
             currentNode = currentNode.getEdges()[index];
         }
 
-        return true;
+        return true; //can't reutrn the flag because there will be none with the prefix.
     }
 
     /**
@@ -95,7 +115,7 @@ public class Trie {
      */
     public int size() {
 
-        return size;
+        return size; //O(1) since it is being calculated in add.
 
     }
 }
