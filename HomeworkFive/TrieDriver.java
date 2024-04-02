@@ -16,8 +16,8 @@ public class TrieDriver {
             trie.add(file.next());
         }
 
-        System.out.println(trie.remove("car"));
-        System.out.println(trie.contains("car"));
+        System.out.println(trie.add(""));
+        System.out.println(trie.contains(""));
         
         System.out.println("The number of words in the trie is: " + trie.size());
 
@@ -34,7 +34,7 @@ public class TrieDriver {
                 } else {
                     System.out.println("That is neither a word nor a prefix");
                 } 
-
+                
             }   
 
         } while (wordOrPre != "");

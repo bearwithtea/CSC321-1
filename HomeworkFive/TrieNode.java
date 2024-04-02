@@ -25,19 +25,21 @@ class TrieNode {
     }
 
     /**
+     * @param i //TODO: make this a better name
      * @return edges
      * This is a method that returns the edges array
      */
-    public TrieNode[] getEdges() {
-        return edges;
+    public TrieNode getEdge(char i) {
+        return edges[i - 'a'];
     }
 
     /**
-     * @param edges
+     * @param newNode
+     * @param i
      * This is a method that sets the edges array
      */
-    public void setEdges(TrieNode[] edges) {
-        this.edges = edges;
+    public void setEdge(TrieNode newNode, char i) {
+        this.edges[i - 'a'] = newNode;
     }
 
     /**

@@ -11,13 +11,9 @@ public class Trie {
     int size = 0;
 
     public Trie () {
+
         root = new TrieNode(); //instantiaing root object
 
-        for (int i = 0; i < root.getPossibleLetters(); i++) {
-            root.getEdges()[i] = null; //setting all edges to null so that they exist but don't have nything in them 
-            
-            //TODO: move this to the TrieNode class
-        }
     }
 
     /**
@@ -33,12 +29,11 @@ public class Trie {
 
         for (int i = 0; i < word.length(); i++) {
             char currentLetter = word.charAt(i);
-            int index = currentLetter - 'a'; //converting into unicode.
 
-            if (currentNode.getEdges()[index] == null) { 
-                currentNode.getEdges()[index] = new TrieNode(); //have top create a new node if there is no other node already there
+            if (currentNode.getEdge(currentLetter) == null) { 
+                currentNode.setEdge(new TrieNode(), currentLetter); //have top create a new node if there is no other node already there
             }
-            currentNode = currentNode.getEdges()[index];
+            currentNode = currentNode.getEdge(currentLetter);
         }
         size++;
 
@@ -46,27 +41,6 @@ public class Trie {
 
         return true;
     }
-
-    public boolean remove(String word) {
-
-        TrieNode currentNode = root;
-
-        word = word.toLowerCase();
-
-        for (int i = 0; i < word.length(); i++) {
-            char currentLetter = word.charAt(i);
-            int index = currentLetter - 'a'; //converting into unicode.
-
-            if (currentNode.getEdges()[index] != null) { 
-                currentNode.getEdges()[index] = null; //if the edges aren't null, make them so!
-            }
-        }
-        size--;
-
-        currentNode.setWordorPre(false);
-
-        return true;
-    } 
 
     /**
      * @param word
@@ -78,13 +52,12 @@ public class Trie {
 
         for (int i = 0; i < word.length(); i++ ) {
             char currentLetter = word.charAt(i);
-            int index = currentLetter - 'a';
 
-            if (currentNode.getEdges()[index] == null) {
+            if (currentNode.getEdge(currentLetter) == null) {
                 return false; //if none of the edges are in the trie, then return false
             }
 
-            currentNode = currentNode.getEdges()[index];
+            currentNode = currentNode.getEdge(currentLetter);
 
         }
         return currentNode.getWordorPre(); //marks the flag if the word is in the trie
@@ -101,12 +74,11 @@ public class Trie {
 
         for (int i = 0; i < pre.length(); i++) {
             char currentLetter = pre.charAt(i);
-            int index = currentLetter - 'a';
 
-            if (currentNode.getEdges()[index] == null) {
+            if (currentNode.getEdge(currentLetter) == null) {
                 return false;
             }
-            currentNode = currentNode.getEdges()[index];
+            currentNode = currentNode.getEdge(currentLetter);
         }
 
         return true; //can't reutrn the flag because there will be none with the prefix.
