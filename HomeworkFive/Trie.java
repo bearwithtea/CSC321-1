@@ -9,7 +9,6 @@ public class Trie {
 
     protected TrieNode root; //creating root node
     int size = 0;
-    TrieNode currentNode = root;
 
     public Trie () {
         root = new TrieNode(); //instantiaing root object
@@ -27,6 +26,8 @@ public class Trie {
      * Adds a word to the tree 
      **/
     public boolean add(String word) { //sets the indexed node to root, starting point.
+
+        TrieNode currentNode = root;
 
         word = word.toLowerCase();
 
@@ -46,8 +47,9 @@ public class Trie {
         return true;
     }
 
-    /* this is actually insane
     public boolean remove(String word) {
+
+        TrieNode currentNode = root;
 
         word = word.toLowerCase();
 
@@ -58,20 +60,21 @@ public class Trie {
             if (currentNode.getEdges()[index] != null) { 
                 currentNode.getEdges()[index] = null; //if the edges aren't null, make them so!
             }
-            currentNode = root;
         }
         size--;
 
         currentNode.setWordorPre(false);
 
         return true;
-    } */
+    } 
 
     /**
      * @param word
      * @return currentNode.isWordorPre
      */
     public boolean contains(String word) {
+
+        TrieNode currentNode = root;
 
         for (int i = 0; i < word.length(); i++ ) {
             char currentLetter = word.charAt(i);

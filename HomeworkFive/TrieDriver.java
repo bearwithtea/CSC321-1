@@ -17,7 +17,7 @@ public class TrieDriver {
         }
 
         System.out.println(trie.remove("car"));
-        System.out.println(trie.contains(""));
+        System.out.println(trie.contains("car"));
         
         System.out.println("The number of words in the trie is: " + trie.size());
 
