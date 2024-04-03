@@ -16,8 +16,16 @@ public class TrieDriver {
             trie.add(file.next());
         }
 
-        System.out.println(trie.add(""));
-        System.out.println(trie.contains(""));
+        //unit testing
+        /* 
+        System.out.println(trie.add("sillyhehe")); //true - new word
+        System.out.println(trie.add("car")); //false - duplicate
+        // System.out.println(trie.add("")); //throws error
+        System.out.println(trie.contains("car")); //true
+        System.out.println(trie.contains("sdfgsdfg")); //false
+        System.out.println(trie.containsPrefix("pre")); //true
+        System.out.println(trie.containsPrefix("hghghgh")); //false
+        */
         
         System.out.println("The number of words in the trie is: " + trie.size());
 
@@ -33,9 +41,8 @@ public class TrieDriver {
                     System.out.println(wordOrPre + " is a prefix!");
                 } else {
                     System.out.println("That is neither a word nor a prefix");
-                } 
-                
-            }   
+                }
+            }
 
         } while (wordOrPre != "");
 
