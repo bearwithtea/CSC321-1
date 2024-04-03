@@ -26,9 +26,9 @@ public class Trie {
      **/
     public boolean add(String word) { //sets the indexed node to root, starting point.
 
-        TrieNode currentNode = root;
-
         word = word.toLowerCase();
+
+        TrieNode currentNode = root;
 
         if (word == null || word.isEmpty()) {
             throw new IllegalArgumentException("Added words cannot be null or empty"); //should I be throwing this?
@@ -59,6 +59,8 @@ public class Trie {
      */
     public boolean contains(String word) {
 
+        word = word.toLowerCase();
+
         TrieNode currentNode = root;
 
         for (int i = 0; i < word.length(); i++ ) {
@@ -79,6 +81,8 @@ public class Trie {
      * @return the flag of whether or not it is a prefix or not
      */
     public boolean containsPrefix(String pre) {
+
+        pre = pre.toLowerCase();
 
         TrieNode currentNode = root;
 
