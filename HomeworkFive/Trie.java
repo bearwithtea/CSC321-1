@@ -30,10 +30,6 @@ public class Trie {
 
         TrieNode currentNode = root;
 
-        if (word == null || word.isEmpty()) {
-            throw new IllegalArgumentException("Added words cannot be null or empty"); //should I be throwing this?
-        }
-
         if (contains(word)) {
             return false; //checking for duplicates
         }
@@ -119,6 +115,14 @@ class TrieNode {
     private TrieNode [] edges;
 
     /**
+     * This is a constructoir that sets the intial variables to their necessary starting points.
+     */
+    public TrieNode() {
+        edges = new TrieNode[possibleLetters];
+        isWordorPre = false;
+    }
+
+    /**
      * @return isWordorPre
      * This method gets the flag.
      */
@@ -168,11 +172,4 @@ class TrieNode {
         this.possibleLetters = possibleLetters;
     }
 
-    /**
-     * This is a method that sets the intial variables to their necessary starting points.
-     */
-    public TrieNode() {
-        edges = new TrieNode[possibleLetters];
-        isWordorPre = false;
-    }
 }

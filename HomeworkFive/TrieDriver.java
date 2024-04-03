@@ -18,9 +18,10 @@ public class TrieDriver {
 
         //unit testing
         /* 
+        System.out.println(trie.containsPrefix(""));
         System.out.println(trie.add("sillyhehe")); //true - new word
         System.out.println(trie.add("car")); //false - duplicate
-        // System.out.println(trie.add("")); //throws error
+        System.out.println(trie.add("")); true
         System.out.println(trie.contains("car")); //true
         System.out.println(trie.contains("sdfgsdfg")); //false
         System.out.println(trie.containsPrefix("pre")); //true
