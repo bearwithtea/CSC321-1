@@ -18,9 +18,15 @@ public class WordSet
 
         {
             for (int i = 0; i < word.length(); i++) {
-                String letter = word.substring(0);
+                Character letter = word.charAt(i);
+
+                if (!Character.isLetterOrDigit(letter)) {
+                    word  = word.replace(Character.toString(letter), "");
+                }
                 
             }
+
+            System.out.println(word);
             size++;
         }
         return true;

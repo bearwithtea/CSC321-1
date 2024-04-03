@@ -11,7 +11,7 @@ public class WordSetDriver {
 
         WordSet tree = new WordSet();
 
-        tree.add("hel-lo12345");
+        tree.add("--hel-lo12345");
 
     }
     
