@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class WordSet 
 {
 
     int size;
-    TreeSet tree = new TreeSet<>();
+    TreeSet<String> tree = new TreeSet<String>();
 
     public WordSet() 
     {
@@ -41,9 +42,9 @@ public class WordSet
             }
 
             word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
-            System.out.println(word);
             size++;
         }
+        tree.add(word);
         return true;
     }
 
@@ -55,7 +56,18 @@ public class WordSet
 
     public String getLongest()
     {
-        return "hello";
+        ArrayList<String> longestWords = new ArrayList<String>();
+        String currentLongestWord = "";
+        for (String word : tree) 
+        {
+           while (word.length() > currentLongestWord.length())  //TODO: how do I get this to iterate even after I get a longest word?
+           {
+                currentLongestWord = word;
+           } 
+           longestWords.add(currentLongestWord);
+        }
+        System.out.println(longestWords);
+        return currentLongestWord;
     }
 
     public String toString()
