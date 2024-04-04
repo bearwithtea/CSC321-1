@@ -15,17 +15,32 @@ public class WordSet
     {
 
         word = word.toLowerCase();
+        int firstLetterOrNumber = 0;
+        int lastLetterOrNumber = 0;
 
         {
-            for (int i = 0; i < word.length(); i++) {
-                Character letter = word.charAt(i);
 
-                if (!Character.isLetterOrDigit(letter)) {
-                    word  = word.replace(Character.toString(letter), "");
+            for (int i = 0; i < word.length(); i++) //moving from the front.
+            {
+                if (Character.isLetterOrDigit(word.charAt(i))) 
+                {
+                    firstLetterOrNumber = i;
+                    break;
                 }
-                
             }
 
+            for (int i = word.length() - 1; i > 0; i--) //moving from the back.
+            {
+
+                if (Character.isLetterOrDigit(word.charAt(i)))
+                {
+                    lastLetterOrNumber = i;
+                    break;
+                }
+
+            }
+
+            word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
             System.out.println(word);
             size++;
         }
@@ -34,6 +49,7 @@ public class WordSet
 
     public int size() 
     {
+        System.out.println(size);
         return size;
     }
 

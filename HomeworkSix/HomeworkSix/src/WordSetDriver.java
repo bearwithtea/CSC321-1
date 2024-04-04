@@ -11,7 +11,14 @@ public class WordSetDriver {
 
         WordSet tree = new WordSet();
 
-        tree.add("--hel-lo12345");
+        /* 
+        while (file.hasNext()) {
+            tree.add(file.next());
+        }
+        */
+
+        tree.add("--Abc-123!");
+        tree.size();
 
     }
     
