@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class WordSet 
@@ -13,7 +12,7 @@ public class WordSet
 
     }
 
-    public boolean add(String word) //TODO: This code always deletes the first word. Why?
+    public boolean add(String word) //TODO: This code always deletes the first word. why?
     {
 
     word = word.toLowerCase();
@@ -48,8 +47,7 @@ public class WordSet
            } 
         }
 
-        if (firstLetterOrNumber != 0 && lastLetterOrNumber != -1) 
-        {
+        if (firstLetterOrNumber != 0 && lastLetterOrNumber != -1) {
             return false;
         } 
 
