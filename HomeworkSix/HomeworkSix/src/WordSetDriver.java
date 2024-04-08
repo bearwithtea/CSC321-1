@@ -17,9 +17,10 @@ public class WordSetDriver
         {
             tree.add(file.next());
         }
-
-        tree.size();
-        tree.toString();
+        System.out.println("\n");
+        System.out.println("There are " + tree.size() + " total words in the tree" + " and " + tree.uniqueWords() + " unique words in the tree.");
+        System.out.println("The longest word in the tree is '" + tree.getLongest() + "' with " + tree.getLongest().length() + " letters. \n");
+        System.out.println("-------------------------------------------------------------------------------- \n");
         System.out.println(tree.toString());
 
     }
