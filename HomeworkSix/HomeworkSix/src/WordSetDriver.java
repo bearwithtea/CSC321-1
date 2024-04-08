@@ -19,7 +19,8 @@ public class WordSetDriver
         }
 
         tree.size();
-        System.out.println(tree.getLongest()); //this is returning battlefield, when it should be returning proposition.
+        tree.toString();
+        System.out.println(tree.toString());
 
     }
     

@@ -50,7 +50,6 @@ public class WordSet
 
     public int size() 
     {
-        System.out.println(size);
         return size;
     }
 
@@ -58,21 +57,35 @@ public class WordSet
     {
         ArrayList<String> longestWords = new ArrayList<String>();
         String currentLongestWord = "";
+        
         for (String word : tree) 
         {
-           while (word.length() > currentLongestWord.length())  //TODO: how do I get this to iterate even after I get a longest word?
+           if (word.length() > currentLongestWord.length())  //TODO: how do I get this to iterate even after I get a longest word?
            {
                 currentLongestWord = word;
            } 
            longestWords.add(currentLongestWord);
         }
-        System.out.println(longestWords);
         return currentLongestWord;
     }
 
     public String toString()
     {
-        return "hello";
-    }
 
+        int i = 0;
+        int wordsPerColumn = (size/5);
+        String newResult = "";
+
+        for (String word : tree) 
+        {
+            newResult += word += "\n";
+            i++;
+
+            if (i == wordsPerColumn) {
+                newResult += "\t";
+            }
+
+        }
+        return newResult;
+    }
 }
