@@ -1,0 +1,4 @@
+locked push locked
+locked coin unlocked
+unlocked push locked
+unlocked coin unlocked

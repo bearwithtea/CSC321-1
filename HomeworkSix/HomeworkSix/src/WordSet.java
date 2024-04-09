@@ -1,5 +1,10 @@
 import java.util.TreeSet;
 
+/**
+ * @author Owen McGrath
+ * @version 4/04/2024
+ * This class sanitizes file input, gets the amount of words, the unique words, the longest word, and sends it out to a formatted string.
+ */
 public class WordSet 
 {
 
@@ -12,11 +17,16 @@ public class WordSet
 
     }
 
-    public boolean add(String word) //TODO: This code always deletes the first word. why?
+    /**
+     * @param word
+     * @return true if the word can be added, returns false if it does not meet sanitization standards.
+     * Cleans user file input, allowing for only letters and digits unless the special character is sandwhched in between letters and numbers. It also continously counts the size of the TreeMap and checks if one word is longer than the other. 
+     */
+    public boolean add(String word)
     {
 
     word = word.toLowerCase();
-    int firstLetterOrNumber = 0; //initialize at the first index
+    int firstLetterOrNumber = -1; //initialize at the first index
     int lastLetterOrNumber = -1; //initalize at the back
 
         for (int i = 0; i < word.length(); i++) //moving from the front.
@@ -27,11 +37,10 @@ public class WordSet
                 firstLetterOrNumber = i;
                 break;
             }
-        }
+        } 
 
-        for (int i = word.length() - 1; i > 0; i--) //moving from the back.
+        for (int i = word.length() - 1; i >= 0; i--) //moving from the back.
         {
-
             if (Character.isLetterOrDigit(word.charAt(i)))
             {
                 lastLetterOrNumber = i;
@@ -47,11 +56,11 @@ public class WordSet
            } 
         }
 
-        if (firstLetterOrNumber != 0 && lastLetterOrNumber != -1) {
+        if (firstLetterOrNumber == -1 && lastLetterOrNumber == -1) 
+        {
             return false;
         } 
-
-        else
+        else 
         {
             word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
 
@@ -63,16 +72,28 @@ public class WordSet
         }
     }
 
+    /**
+     * @return size
+     * Returns the size variable that was incremented in add()
+     */
     public int size() 
     {
         return size;
     }
 
+    /**
+     * @return getLongest()
+     * Returns the getLongest variable that was incremented in add()
+     */
     public String getLongest()
     {        
         return currentLongestWord;
     }
 
+    /**
+     * @return newResult
+     * Formats the text output based on five columns and the padding correlated to the longest word.
+     */
     public String toString()
     {
         int i = 0;
@@ -93,6 +114,10 @@ public class WordSet
         return newResult;
     }
 
+    /**
+     * @return tree.Size();
+     * Returns the size of the tree, giving the amount of unique words.
+     */
     public int uniqueWords() 
     {
         return tree.size();

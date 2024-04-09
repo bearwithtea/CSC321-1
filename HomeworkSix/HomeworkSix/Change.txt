@@ -1,0 +1,16 @@
+0cents N 5cents
+0cents D 10cents
+0cents Q 25cents
+5cents N 10cents
+5cents D 15cents
+5cents Q 30cents
+10cents N 15cents
+10cents D 20cents
+10cents Q 35cents
+15cents N 20cents
+15cents D 25cents
+20cents N 25cents
+20cents D 30cents
+25cents N 30cents
+25cents D 35cents
+30cents N 35cents
