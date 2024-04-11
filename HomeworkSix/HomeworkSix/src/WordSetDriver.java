@@ -10,6 +10,11 @@ import java.io.FileNotFoundException ;
 public class WordSetDriver 
 {
 
+    /**
+     * @param args
+     * @throws Exception
+     * Main method that instaties the tree, asks the user for a file, and then prints output if a file is found.
+     */
     public static void main(String[] args) throws Exception
     {
         WordSet tree = new WordSet();
@@ -17,6 +22,7 @@ public class WordSetDriver
         Scanner input = new Scanner(System.in); 
         System.out.println("\nPlease input the file name that you would like to read in: ");
         String filename = input.nextLine();
+        filename.toLowerCase();
         
         try 
         {
@@ -32,13 +38,21 @@ public class WordSetDriver
             return;
         }
 
+        /* Unit Testing (Adding) */
+        //System.out.println(tree.add("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEH")); //-- new word
+        //System.out.println(tree.add("above")); //-- duplicate
+        //System.out.println(tree.add("--")); //-- should be removed
+
         System.out.println("\n");
-        System.out.println("There are " + tree.size() + " total words in the tree" + " and " + tree.uniqueWords() + " unique words in the tree.");
-        System.out.println("The longest word in the tree is '" + tree.getLongest() + "' with " + tree.getLongest().length() + " letters. \n");
+        System.out.println("There are " + tree.size() + " unique words in the tree");
+        System.out.println("The longest word is '" + tree.getLongest() + "' with " + tree.getLongest().length() + " letters. \n");
         System.out.println("-------------------------------------------------------------------------------- \n");
         System.out.println(tree.toString());
 
-        //System.out.println(tree.add("--!..,sbc--..123sdf"));
+        /* Unit Testing (T/F) */
+        //System.out.println(tree.add("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEH")); //-- new word
+        //System.out.println(tree.add("above")); //-- duplicate (lincoln.txt)
+        //System.out.println(tree.add("--")); //-- should be removed in its entirety
 
     }
 

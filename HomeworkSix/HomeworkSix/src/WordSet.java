@@ -26,7 +26,7 @@ public class WordSet
     {
 
     word = word.toLowerCase();
-    int firstLetterOrNumber = -1; //initialize at the first index
+    int firstLetterOrNumber = -1; 
     int lastLetterOrNumber = -1; //initalize at the back
 
         for (int i = 0; i < word.length(); i++) //moving from the front.
@@ -48,11 +48,11 @@ public class WordSet
             }
         }
 
-        for (String forWord : tree) 
+        for (String wordInTree : tree) 
         {
-           if (forWord.length() > currentLongestWord.length()) 
+           if (wordInTree.length() > currentLongestWord.length()) 
            {
-                currentLongestWord = forWord;
+                currentLongestWord = wordInTree;
            } 
         }
 
@@ -60,17 +60,14 @@ public class WordSet
         {
             return false;
         } 
-
         if (tree.contains(word))
         {
             return false;
-        }
-
+        } 
         else 
         {
-            word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
 
-            size++;
+            word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
 
             tree.add(word);
 
@@ -80,11 +77,11 @@ public class WordSet
 
     /**
      * @return size
-     * Returns the size variable that was incremented in add()
+     * Returns the size of the tree, which is the number of unique words since sets do not allow for duplicates. :P
      */
     public int size() 
     {
-        return size;
+        return tree.size();
     }
 
     /**
@@ -102,10 +99,11 @@ public class WordSet
      */
     public String toString()
     {
-        int i = 0;
+
         int longestWordLength = currentLongestWord.length() + 1;
         String newResult = "";
 
+        int i = 0;
         for (String word : tree) 
         {
             i++;
@@ -118,14 +116,5 @@ public class WordSet
             }
         }
         return newResult;
-    }
-
-    /**
-     * @return tree.Size();
-     * Returns the size of the tree, giving the amount of unique words.
-     */
-    public int uniqueWords() 
-    {
-        return tree.size();
     }
 }
