@@ -28,6 +28,7 @@ public class WordSetDriver
             }
         } catch (FileNotFoundException e) {
             System.out.println("\n" + "File not found, please try again.\n");
+            main(args);
             return;
         }
 
@@ -36,6 +37,8 @@ public class WordSetDriver
         System.out.println("The longest word in the tree is '" + tree.getLongest() + "' with " + tree.getLongest().length() + " letters. \n");
         System.out.println("-------------------------------------------------------------------------------- \n");
         System.out.println(tree.toString());
+
+        //System.out.println(tree.add("--!..,sbc--..123sdf"));
 
     }
 

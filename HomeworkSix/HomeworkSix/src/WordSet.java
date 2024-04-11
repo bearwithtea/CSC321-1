@@ -60,6 +60,12 @@ public class WordSet
         {
             return false;
         } 
+
+        if (tree.contains(word))
+        {
+            return false;
+        }
+
         else 
         {
             word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
