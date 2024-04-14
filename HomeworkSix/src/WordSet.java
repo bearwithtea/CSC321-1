@@ -25,7 +25,7 @@ public class WordSet
     public boolean add(String word)
     {
 
-    word = word.toLowerCase();
+    word = word.toLowerCase(); //making it lowercase [x]
     int firstLetterOrNumber = -1; 
     int lastLetterOrNumber = -1; //initalize at the back
 
@@ -34,7 +34,7 @@ public class WordSet
 
             if (Character.isLetterOrDigit(word.charAt(i))) 
             {
-                firstLetterOrNumber = i;
+                firstLetterOrNumber = i; //finds the first letter/number, set variable
                 break;
             }
         } 
@@ -43,28 +43,29 @@ public class WordSet
         {
             if (Character.isLetterOrDigit(word.charAt(i)))
             {
-                lastLetterOrNumber = i;
+                lastLetterOrNumber = i; //finds the last letter/number, sets variable.
                 break;
             }
         }
 
+        //finds longest word in the tree
         for (String wordInTree : tree) 
         {
            if (wordInTree.length() > currentLongestWord.length()) 
            {
-                currentLongestWord = wordInTree;
+                currentLongestWord = wordInTree; 
            } 
         }
 
-        if (firstLetterOrNumber == -1 && lastLetterOrNumber == -1) 
+        if (firstLetterOrNumber == -1 && lastLetterOrNumber == -1) //if there are no alphanumeric characters left, then these vars remain -1.
         {
             return false;
         } 
-        if (tree.contains(word))
+        if (tree.contains(word)) //if it has already been added.
         {
             return false;
         } 
-        else 
+        else //build the string and add it.
         {
 
             word = word.substring(firstLetterOrNumber, lastLetterOrNumber + 1);
@@ -81,16 +82,16 @@ public class WordSet
      */
     public int size() 
     {
-        return tree.size();
+        return tree.size(); //[x]
     }
 
     /**
      * @return getLongest()
-     * Returns the getLongest variable that was incremented in add()
+     * Returns the getLongest variable that was found in add()
      */
     public String getLongest()
     {        
-        return currentLongestWord;
+        return currentLongestWord; //[x]
     }
 
     /**
@@ -100,21 +101,71 @@ public class WordSet
     public String toString()
     {
 
-        int longestWordLength = currentLongestWord.length() + 1;
         String newResult = "";
+        int longestWordLength = currentLongestWord.length() + 1; //formatting the size of each column, which should be one larger than the longest word [x]
 
-        int i = 0;
+        int wordCount = 0;
         for (String word : tree) 
         {
-            i++;
+            wordCount++;
             String formattedString = String.format("%-" + longestWordLength + "s", word);
             newResult += formattedString;
 
-            if (i % 5 == 0)
+            if (wordCount % 5 == 0) //if the increment is modded to five, then create a new line (five words per line) [x].
             {
                 newResult += "\n";
             }
         }
         return newResult;
+    }
+
+    //getters and setters!
+
+    /**
+     * gets the size variable
+     * @return size
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * sets the size variable
+     * @param size
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
+     * gets the tree TreeSet
+     * @return
+     */
+    public TreeSet<String> getTree() {
+        return tree;
+    }
+
+    /**
+     * sets the tree TreeSet
+     * @param tree
+     */
+    public void setTree(TreeSet<String> tree) {
+        this.tree = tree;
+    }
+
+    /**
+     * gets the currentLongestWord variable
+     * @return
+     */
+    public String getCurrentLongestWord() {
+        return currentLongestWord;
+    }
+
+    /**
+     * sets the currentLongestWord variable
+     * @param currentLongestWord
+     */
+    public void setCurrentLongestWord(String currentLongestWord) {
+        this.currentLongestWord = currentLongestWord;
     }
 }
