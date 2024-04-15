@@ -1,8 +1,10 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -11,14 +13,16 @@ import java.util.Set;
  * @author Owen McGrath (building on code by Dave Reed)
  * @version 4/15/2024
  */
-public class FiniteStateMachine<StateLabel, EdgeLabel> {
+public class FiniteStateMachine<StateLabel, EdgeLabel> 
+{
     private HashMap<StateLabel, HashMap<EdgeLabel, StateLabel>> fsm;
 
     /**
      * Creates an empty finite state machine (with no states or edges).
      */
-    public FiniteStateMachine() {
-        // TO BE COMPLETED
+    public FiniteStateMachine() 
+    {
+        this.fsm = new HashMap<>(); //intialzing the fsm as an empty hashmap.
     }
 
     /**
@@ -27,8 +31,16 @@ public class FiniteStateMachine<StateLabel, EdgeLabel> {
      *   @param edge the label of the edge
      *   @param end the label of the ending state
      */
-    public void addEdge(StateLabel start, EdgeLabel edge, StateLabel end) {
-        // TO BE COMPLETED
+    public void addEdge(StateLabel start, EdgeLabel edge, StateLabel end) 
+    {
+        if (!this.fsm.containsKey(start)) 
+        {
+            this.fsm.put(start, new HashMap<EdgeLabel, StateLabel>());
+        }
+
+        HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start);
+        
+        edgeMap.put(edge, end);
     }
 
     /**
@@ -45,7 +57,8 @@ public class FiniteStateMachine<StateLabel, EdgeLabel> {
      *   @param edge the label of the edge
      *   @return the label of the ending state for that edge (or null if it doesn't exist)
      */
-    public StateLabel getAdjacentState(StateLabel startState, EdgeLabel edge) {
+    public StateLabel getAdjacentState(StateLabel startState, EdgeLabel edge) 
+    {
         // TO BE COMPLETED
     }
   
@@ -54,7 +67,8 @@ public class FiniteStateMachine<StateLabel, EdgeLabel> {
      * @param startState the label of the start state
      * @return a Set of all state labels adjacent to startState
      */
-    public Set<StateLabel> getAllAdjacentStates(StateLabel startState) {
+    public Set<StateLabel> getAllAdjacentStates(StateLabel startState) 
+    {
         // TO BE COMPLETED
     }
         
@@ -64,28 +78,31 @@ public class FiniteStateMachine<StateLabel, EdgeLabel> {
      *   @param edgeSeq a list of edges to be followed from the start state
      *   @return the ending state after following the edge sequence
      */
-    public StateLabel findEndState(StateLabel startState, List<EdgeLabel> edgeSeq) {
+    public StateLabel findEndState(StateLabel startState, List<EdgeLabel> edgeSeq) 
+    {
         // TO BE COMPLETED
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////
-
-    public List<StateLabel> findPath(StateLabel startState, StateLabel endState) {
+    public List<StateLabel> findPath(StateLabel startState, StateLabel endState) 
+    {
         List<StateLabel> startPath = new ArrayList<StateLabel>();
         startPath.add(startState);
         
         Queue<List<StateLabel>> paths = new LinkedList<List<StateLabel>>();
         paths.add(startPath);
         
-        while (!paths.isEmpty()) {
+        while (!paths.isEmpty()) 
+        {
             List<StateLabel> shortestPath = paths.remove();
             StateLabel current = shortestPath.get(shortestPath.size()-1);
-            if (current.equals(endState)) {
+            if (current.equals(endState)) 
+            {
                 return shortestPath;
             }
-            else {
-                for (StateLabel s : this.getAllAdjacentStates(current)) {
+            else 
+            {
+                for (StateLabel s : this.getAllAdjacentStates(current)) 
+                {
                     if (!shortestPath.contains(s)) {
                         List<StateLabel> copy = new ArrayList<StateLabel>(shortestPath);
                         copy.add(s);
