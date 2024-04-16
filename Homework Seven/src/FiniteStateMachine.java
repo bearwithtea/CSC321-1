@@ -33,12 +33,12 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public void addEdge(StateLabel start, EdgeLabel edge, StateLabel end) 
     {
-        if (!this.fsm.containsKey(start)) 
+        if (!this.fsm.containsKey(start)) // if the fsm does not contain a key at the start, then create one.
         {
-            this.fsm.put(start, new HashMap<EdgeLabel, StateLabel>());
+            this.fsm.put(start, new HashMap<EdgeLabel, StateLabel>()); //putting a new hashmap as the starting key, with the edgelabel as the key, statelabel as the value
         }
 
-        HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start);
+        HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start); //creating a new map at the edge of the 
         
         edgeMap.put(edge, end);
     }
