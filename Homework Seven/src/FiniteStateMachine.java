@@ -31,23 +31,24 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      *   @param edge the label of the edge
      *   @param end the label of the ending state
      */
-    public void addEdge(StateLabel start, EdgeLabel edge, StateLabel end) 
+    public void addEdge(StateLabel start, EdgeLabel edge, StateLabel end) //edge is the transition state
     {
         if (!this.fsm.containsKey(start)) // if the fsm does not contain a key at the start, then create one.
         {
             this.fsm.put(start, new HashMap<EdgeLabel, StateLabel>()); //putting a new hashmap as the starting key, with the edgelabel as the key, statelabel as the value
         }
 
-        HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start); //creating a new map at the edge of the 
+        HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start); //setting the hashmap at the beginning to edgeMap
         
-        edgeMap.put(edge, end);
+        edgeMap.put(edge, end); //putting the edge at the end
     }
 
     /**
      * Returns a String representation of the finite state machine.
      *   @return the String representation
      */
-    public String toString() {
+    public String toString() 
+    {
         return this.fsm.toString();
     }
     
@@ -59,7 +60,25 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public StateLabel getAdjacentState(StateLabel startState, EdgeLabel edge) 
     {
-        // TO BE COMPLETED
+
+        Map<EdgeLabel, StateLabel> edges = this.fsm.get(startState); // getting the edges of the map via each start state and putting them into a reference map.
+
+        if (this.fsm.get(startState) != null) //if there is a startState
+        {
+            if (edges != null)  //if there are edges
+            {
+                return edges.get(edge); // then get the edge in the edges map!
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+
     }
   
     /**
