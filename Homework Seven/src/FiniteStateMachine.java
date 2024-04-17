@@ -88,7 +88,10 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public Set<StateLabel> getAllAdjacentStates(StateLabel startState) 
     {
-        // TO BE COMPLETED
+        for (this.fsm.get(startState)) 
+        {
+            
+        }
     }
         
     /**
