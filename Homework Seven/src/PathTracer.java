@@ -40,12 +40,18 @@ public class PathTracer
             }
 
             System.out.println("Enter a start state (* to end): ");
-            String startState = input.nextLine();
+            String start = input.nextLine();
 
-            System.out.println("Enter a step sequence (seperated with whitespace): ");
-            String step = input.nextLine();
+            //System.out.println("Enter a step sequence (seperated with whitespace): ");
+            //String step = input.nextLine();
+            
+            //System.out.println("Enter an edge state: ");
+            //String edge = input.nextLine();
 
-            fsm.findEndState(startState, step);
+            //System.out.println(fsm.getAdjacentState(start, edge));
+            System.out.println(fsm.getAllAdjacentStates(start));            
+
+            ///fsm.findEndState(startState, step);
 
         //otherwise throw an error and have them try again using recursion
         } 
@@ -55,9 +61,6 @@ public class PathTracer
             main(args);
             return;
         }
-
-        System.out.println(fsm);
-        System.out.println(fsm.getAdjacentState(startState, filename));
     
     }
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Class that models a Finite State Machine.
@@ -90,20 +91,22 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
     public Set<StateLabel> getAllAdjacentStates(StateLabel startState) 
     {
 
-        HashSet<StateLabel> newSet = new HashSet<StateLabel> ();
+        Set<StateLabel> newSet = new HashSet()<StateLabel> ();
+        
+        HashMap<EdgeLabel, StateLabel> innerMap = this.fsm.get(startState);
 
-        if (this.fsm.get(startState) != null) 
+        if (innerMap != null) 
         {
-            for (StateLabel startState : fsm) 
+            for (EdgeLabel edge : innerMap.keySet()) 
             {
-                newSet = newSet.add(this.fsm.get(startState));
-                return newSet;
+                newSet.add(innerMap.get(edge));
             } 
         }
         else 
         {
             return null;
         }
+        return newSet;
     }
         
     /**
