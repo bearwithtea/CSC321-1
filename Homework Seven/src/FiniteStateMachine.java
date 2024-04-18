@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -88,9 +89,20 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public Set<StateLabel> getAllAdjacentStates(StateLabel startState) 
     {
-        for (this.fsm.get(startState)) 
+
+        HashSet<StateLabel> newSet = new HashSet<StateLabel> ();
+
+        if (this.fsm.get(startState) != null) 
         {
-            
+            for (StateLabel startState : fsm) 
+            {
+                newSet = newSet.add(this.fsm.get(startState));
+                return newSet;
+            } 
+        }
+        else 
+        {
+            return null;
         }
     }
         
