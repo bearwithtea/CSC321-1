@@ -91,7 +91,7 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
     public Set<StateLabel> getAllAdjacentStates(StateLabel startState) 
     {
 
-        Set<StateLabel> newSet = new HashSet()<StateLabel> ();
+        Set<StateLabel> newSet = new HashSet<StateLabel>();
         
         HashMap<EdgeLabel, StateLabel> innerMap = this.fsm.get(startState);
 
@@ -117,7 +117,7 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public StateLabel findEndState(StateLabel startState, List<EdgeLabel> edgeSeq) 
     {
-        // TO BE COMPLETED
+        //iterate over the arraylist, change the stepper from start, then call the getAdjacentStates and then move from there.
     }
 
     public List<StateLabel> findPath(StateLabel startState, StateLabel endState) 

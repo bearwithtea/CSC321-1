@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException ;
 
@@ -43,15 +45,16 @@ public class PathTracer
             String start = input.nextLine();
 
             //System.out.println("Enter a step sequence (seperated with whitespace): ");
-            //String step = input.nextLine();
+            String step = input.nextLine();
+            List allSteps = new ArrayList<>();
+            allSteps.add(step); 
             
             //System.out.println("Enter an edge state: ");
             //String edge = input.nextLine();
 
             //System.out.println(fsm.getAdjacentState(start, edge));
             System.out.println(fsm.getAllAdjacentStates(start));            
-
-            ///fsm.findEndState(startState, step);
+            fsm.findEndState(start, allSteps);
 
         //otherwise throw an error and have them try again using recursion
         } 
