@@ -44,15 +44,24 @@ public class PathTracer
             System.out.println("Enter a start state (* to end): ");
             String start = input.nextLine();
 
-            //System.out.println("Enter a step sequence (seperated with whitespace): ");
-            String step = input.nextLine();
-            List allSteps = new ArrayList<>();
-            allSteps.add(step); 
+            System.out.println("Enter a step sequence (seperated with whitespace): ");
             
-            //System.out.println("Enter an edge state: ");
-            //String edge = input.nextLine();
+            ArrayList<String> allSteps = new ArrayList<>();
 
-            //System.out.println(fsm.getAdjacentState(start, edge));
+            if (input.hasNext()) 
+            {
+                String step = input.nextLine();
+                String[] steps = step.split(" ");
+                for (String s : steps)
+                allSteps.add(s);
+            }
+
+            System.out.println(allSteps);
+            
+            System.out.println("Enter an edge state: ");
+            String edge = input.nextLine();
+
+            System.out.println(fsm.getAdjacentState(start, edge));
             System.out.println(fsm.getAllAdjacentStates(start));            
             fsm.findEndState(start, allSteps);
 
