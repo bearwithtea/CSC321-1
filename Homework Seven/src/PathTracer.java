@@ -41,13 +41,13 @@ public class PathTracer
                 fsm.addEdge(startState, transition, endState);
             }
 
+            /* Start State */
             System.out.println("Enter a start state (* to end): ");
             String start = input.nextLine();
 
+            /* Step Sequence */
             System.out.println("Enter a step sequence (seperated with whitespace): ");
-            
             ArrayList<String> allSteps = new ArrayList<>();
-
             if (input.hasNext()) 
             {
                 String step = input.nextLine();
@@ -55,22 +55,25 @@ public class PathTracer
                 for (String s : steps)
                 allSteps.add(s);
             }
-
-            System.out.println(allSteps);
             
+            /* Edge State */
             System.out.println("Enter an edge state: ");
             String edge = input.nextLine();
 
-            System.out.println(fsm.getAdjacentState(start, edge));
-            System.out.println(fsm.getAllAdjacentStates(start));            
+            input.close();
+            fileReader.close();
+
+            /* Method Calls */
+            fsm.getAdjacentState(start, edge);
+            fsm.getAllAdjacentStates(start);            
             fsm.findEndState(start, allSteps);
 
-        //otherwise throw an error and have them try again using recursion
         } 
         catch (FileNotFoundException e) 
         {
             System.out.println("\n" + "File not found, please try again.\n");
             main(args);
+            input.close();
             return;
         }
     

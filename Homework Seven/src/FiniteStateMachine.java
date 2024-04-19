@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Class that models a Finite State Machine.
@@ -117,7 +115,19 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public StateLabel findEndState(StateLabel startState, List<EdgeLabel> edgeSeq) 
     {
-        //iterate over the arraylist, change the stepper from start, then call the getAdjacentStates and then move from there.
+        StateLabel stepper = startState;
+
+        for (EdgeLabel step : edgeSeq) 
+        {
+            stepper = this.getAdjacentState(stepper, step); //stepper is the current state and steps is the edge
+
+            if (stepper == null) 
+            {
+                return null;
+            }
+        }
+        System.out.println("End State: " + stepper);
+        return stepper;
     }
 
     public List<StateLabel> findPath(StateLabel startState, StateLabel endState) 
