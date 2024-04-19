@@ -1,6 +1,5 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException ;
 
@@ -23,7 +22,7 @@ public class PathTracer
 
         //prompting user for file, setting it to lowercase.
         Scanner input = new Scanner(System.in); 
-        System.out.println("Enter FSM file: ");
+        System.out.println("\nEnter FSM file: ");
         String filename = input.nextLine();
         filename = filename.toLowerCase();
         
@@ -41,34 +40,40 @@ public class PathTracer
                 fsm.addEdge(startState, transition, endState);
             }
 
-            /* Start State */
-            System.out.println("Enter a start state (* to end): ");
-            String start = input.nextLine();
-
-            /* Step Sequence */
-            System.out.println("Enter a step sequence (seperated with whitespace): ");
-            ArrayList<String> allSteps = new ArrayList<>();
-            if (input.hasNext()) 
+            while (true) //is this okay!?!?!??!?!?!?!?!?
             {
-                String step = input.nextLine();
-                String[] steps = step.split(" ");
-                for (String s : steps)
-                allSteps.add(s);
-            }
             
-            /* Edge State */
-            System.out.println("Enter an edge state: ");
-            String edge = input.nextLine();
+                /* Start State */
+                System.out.println("\nEnter a start state (* to end): ");
+                String start = input.nextLine();
+                if (start.equals("*")) break;
 
+                /* Step Sequence */
+                System.out.println("\nEnter a step sequence (seperated with whitespace): ");
+                ArrayList<String> allSteps = new ArrayList<>();
+                if (input.hasNext()) 
+                {
+                    String step = input.nextLine();
+                    if (step.equals("*")) break;
+                    String[] steps = step.split(" ");
+                    for (String s : steps)
+                    allSteps.add(s);
+                }
+                
+                /* Edge State */
+                System.out.println("\nEnter an edge state: ");
+                String edge = input.nextLine();
+                if (edge.equals("*")) break;
+
+                /* Method Calls */
+                System.out.println("\nAdjacent State: " + fsm.getAdjacentState(start, edge));
+                System.out.println("All Adjacent States: " + fsm.getAllAdjacentStates(start));            
+                System.out.println("End State: " + fsm.findEndState(start, allSteps));
+            }
             input.close();
             fileReader.close();
+        }
 
-            /* Method Calls */
-            fsm.getAdjacentState(start, edge);
-            fsm.getAllAdjacentStates(start);            
-            fsm.findEndState(start, allSteps);
-
-        } 
         catch (FileNotFoundException e) 
         {
             System.out.println("\n" + "File not found, please try again.\n");

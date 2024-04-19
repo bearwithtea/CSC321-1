@@ -126,7 +126,6 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
                 return null;
             }
         }
-        System.out.println("End State: " + stepper);
         return stepper;
     }
 
