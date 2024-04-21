@@ -16,6 +16,7 @@ import java.util.Set;
 public class FiniteStateMachine<StateLabel, EdgeLabel> 
 {
     private HashMap<StateLabel, HashMap<EdgeLabel, StateLabel>> fsm;
+    HashMap<EdgeLabel, StateLabel> edgeMap; //put this in the constructor so that it can be used everywhere!
 
     /**
      * Creates an empty finite state machine (with no states or edges).
@@ -39,8 +40,10 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         }
 
         HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start); //setting the hashmap at the beginning to edgeMap
+
+        //System.out.println(edgeMap);
         
-        edgeMap.put(edge, end); //putting the edge at the end
+        edgeMap.put(edge, end); 
     }
 
     /**
@@ -49,6 +52,7 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
      */
     public String toString() 
     {
+        System.out.println(fsm);
         return this.fsm.toString();
     }
     
@@ -136,6 +140,8 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         
         Queue<List<StateLabel>> paths = new LinkedList<List<StateLabel>>();
         paths.add(startPath);
+
+        List<EdgeLabel> edgePath = new ArrayList<EdgeLabel>();
         
         while (!paths.isEmpty()) 
         {
@@ -143,17 +149,37 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
             StateLabel current = shortestPath.get(shortestPath.size()-1);
             if (current.equals(endState)) 
             {
+                edgePath.add(this.getEdge(startState, endState));
                 return shortestPath;
             }
             else 
             {
                 for (StateLabel s : this.getAllAdjacentStates(current)) 
                 {
-                    if (!shortestPath.contains(s)) {
+                    edgePath.add(this.getEdge(startState, endState));
+                    if (!shortestPath.contains(s)) 
+                    {
                         List<StateLabel> copy = new ArrayList<StateLabel>(shortestPath);
                         copy.add(s);
                         paths.add(copy);
                     }
+                }
+            }
+        }
+        return null;
+    }
+
+    /* Extra Credit Helper Method */
+    //FIXME: Currently returns null for everything.
+    public EdgeLabel getEdge(StateLabel startState, StateLabel endState) 
+    {   
+        if (edgeMap != null) 
+        { //if there's something in the edgemap 
+            for(Map.Entry<EdgeLabel, StateLabel> entry : edgeMap.entrySet()) //for every entry in the edgeMap
+            {   
+                if (entry.getValue().equals(endState)) //if value equals the endState, then return the edg 
+                {
+                    return entry.getKey();
                 }
             }
         }

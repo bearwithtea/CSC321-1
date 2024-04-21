@@ -36,11 +36,12 @@ public class PathTracer
             while (fileReader.hasNext()) 
             {
                 String startState = fileReader.next(); //set the first thing to startState
-                String transition = fileReader.next(); //next thing to transition
+                String edge = fileReader.next(); //next thing to transition
                 String endState = fileReader.next(); //last thing to endState
-                fsm.addEdge(startState, transition, endState);
+                fsm.addEdge(startState, edge, endState);
             }
 
+            System.out.println(fsm.toString());
             while (true) //TODO: Is it okay for me to perform an infinite loop here?
             {
             

@@ -43,8 +43,8 @@ public class PathFinder {
             
                 try 
                 {
-                    //TODO: iterate over the findpath method, for each adjacent found, report its edge.
                     List<String> path = fsm.findPath(start, end); //FIXME: This errors out for the second example on the HW7 page.
+                    String edges = fsm.getEdge(start, end);
                     if (path == null)
                     {
                         System.out.println("\nNO SUCH PATH");
@@ -52,6 +52,7 @@ public class PathFinder {
                     else 
                     {
                         System.out.println("State Path: " + path);
+                        System.out.println("Edge Path: " + edges);
                     }
                 } 
                 catch (NullPointerException e) 
