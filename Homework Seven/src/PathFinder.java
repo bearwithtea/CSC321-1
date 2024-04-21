@@ -1,5 +1,5 @@
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException ;
 public class PathFinder {
@@ -8,7 +8,7 @@ public class PathFinder {
     public static void main(String[] args) throws Exception
     {
 
-        FiniteStateMachine fsm = new FiniteStateMachine<>();
+        FiniteStateMachine<String, String> fsm = new FiniteStateMachine<>();
 
         //prompting user for file, setting it to lowercase.
         Scanner input = new Scanner(System.in); 
@@ -30,21 +30,35 @@ public class PathFinder {
                 fsm.addEdge(startState, transition, endState);
             }
 
-                while (true) 
+            while (true) 
+            {
+                /* Start State */
+                System.out.println("\nEnter a start state (* to end): ");
+                String start = input.nextLine();
+                if (start.equals("*")) break;
+            
+                /* End State */
+                System.out.println("\nEnter an end state: ");
+                String end = input.nextLine();
+            
+                try 
                 {
-                    /* Start State */
-                    System.out.println("\nEnter a start state (* to end): ");
-                    String start = input.nextLine();
-                    if (start.equals("*")) break;
-
-                    /* End State */
-                    System.out.println("\nEnter an end state: ");
-                    String end = input.nextLine();
-
-                    System.out.println("State Path: " + fsm.findPath(start, end)); //this errors on the second example.
-                    //System.out.println("Edge Labels: " + fsm.getAdjacentState(start, edge));
+                    List<String> path = fsm.findPath(start, end); //TODO: This errors out for the second example on the HW7 page.
+                    if (path == null)
+                    {
+                        System.out.println("\nNO SUCH PATH");
+                    }
+                    else 
+                    {
+                        System.out.println("State Path: " + path);
+                    }
+                } 
+                catch (NullPointerException e) 
+                {
+                    System.out.println("\nNO SUCH PATH");
                 }
             }
+        }
 
         catch (FileNotFoundException e) 
         {

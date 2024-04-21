@@ -18,7 +18,7 @@ public class PathTracer
      */
     public static void main(String[] args) throws Exception
     {
-        FiniteStateMachine fsm = new FiniteStateMachine<>();
+        FiniteStateMachine<String, String> fsm = new FiniteStateMachine<>();
 
         //prompting user for file, setting it to lowercase.
         Scanner input = new Scanner(System.in); 
@@ -32,21 +32,22 @@ public class PathTracer
             File inputFile = new File(filename);
             Scanner fileReader = new Scanner(inputFile);
             
+            //while there is more information, read it in.
             while (fileReader.hasNext()) 
             {
-                String startState = fileReader.next();
-                String transition = fileReader.next();
-                String endState = fileReader.next();
+                String startState = fileReader.next(); //set the first thing to startState
+                String transition = fileReader.next(); //next thing to transition
+                String endState = fileReader.next(); //last thing to endState
                 fsm.addEdge(startState, transition, endState);
             }
 
-            while (true) //is this okay!?!?!??!?!?!?!?!?
+            while (true) //TODO: Is it okay for me to perform an infinite loop here?
             {
             
                 /* Start State */
                 System.out.println("\nEnter a start state (* to end): ");
                 String start = input.nextLine();
-                if (start.equals("*")) break;
+                if (start.equals("*")) break; //kinda cool that this works.
 
                 /* Step Sequence */
                 System.out.println("\nEnter a step sequence (seperated with whitespace): ");
@@ -60,15 +61,26 @@ public class PathTracer
                     allSteps.add(s);
                 }
                 
+                
                 /* Edge State */
                 System.out.println("\nEnter an edge state: ");
                 String edge = input.nextLine();
                 if (edge.equals("*")) break;
+                
 
                 /* Method Calls */
-                System.out.println("\nAdjacent State: " + fsm.getAdjacentState(start, edge));
-                System.out.println("All Adjacent States: " + fsm.getAllAdjacentStates(start));            
-                System.out.println("End State: " + fsm.findEndState(start, allSteps));
+
+                if (fsm.findEndState(start, allSteps) == null || fsm.getAdjacentState(start, edge) == null || fsm.getAllAdjacentStates(start) == null)  
+                {
+                    System.out.println("\nILLEGAL SEQUENCE"); //TODO: Which output would you like? does it matter?
+                }
+                else 
+                {
+                    System.out.println("\nAdjacent State: " + fsm.getAdjacentState(start, edge));
+                    System.out.println("All Adjacent States: " + fsm.getAllAdjacentStates(start));            
+                    System.out.println("End State: " + fsm.findEndState(start, allSteps));
+                }
+
             }
             input.close();
             fileReader.close();
