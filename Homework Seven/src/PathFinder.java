@@ -43,7 +43,8 @@ public class PathFinder {
             
                 try 
                 {
-                    List<String> path = fsm.findPath(start, end); //TODO: This errors out for the second example on the HW7 page.
+                    //TODO: iterate over the findpath method, for each adjacent found, report its edge.
+                    List<String> path = fsm.findPath(start, end); //FIXME: This errors out for the second example on the HW7 page.
                     if (path == null)
                     {
                         System.out.println("\nNO SUCH PATH");
