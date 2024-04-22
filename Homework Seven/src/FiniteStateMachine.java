@@ -45,14 +45,12 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         
         edgeMap.put(edge, end); 
     }
-
     /**
      * Returns a String representation of the finite state machine.
      *   @return the String representation
      */
     public String toString() 
     {
-        System.out.println(fsm);
         return this.fsm.toString();
     }
     
@@ -82,7 +80,6 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         {
             return null;
         }
-
     }
   
     /**
@@ -103,10 +100,6 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
             {
                 newSet.add(innerMap.get(edge));
             } 
-        }
-        else 
-        {
-            return null;
         }
         return newSet;
     }
@@ -140,8 +133,6 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         
         Queue<List<StateLabel>> paths = new LinkedList<List<StateLabel>>();
         paths.add(startPath);
-
-        List<EdgeLabel> edgePath = new ArrayList<EdgeLabel>();
         
         while (!paths.isEmpty()) 
         {
@@ -149,14 +140,12 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
             StateLabel current = shortestPath.get(shortestPath.size()-1);
             if (current.equals(endState)) 
             {
-                edgePath.add(this.getEdge(startState, endState));
                 return shortestPath;
             }
             else 
             {
                 for (StateLabel s : this.getAllAdjacentStates(current)) 
                 {
-                    edgePath.add(this.getEdge(startState, endState));
                     if (!shortestPath.contains(s)) 
                     {
                         List<StateLabel> copy = new ArrayList<StateLabel>(shortestPath);
@@ -169,20 +158,8 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         return null;
     }
 
-    /* Extra Credit Helper Method */
-    //FIXME: Currently returns null for everything.
-    public EdgeLabel getEdge(StateLabel startState, StateLabel endState) 
-    {   
-        if (edgeMap != null) 
-        { //if there's something in the edgemap 
-            for(Map.Entry<EdgeLabel, StateLabel> entry : edgeMap.entrySet()) //for every entry in the edgeMap
-            {   
-                if (entry.getValue().equals(endState)) //if value equals the endState, then return the edg 
-                {
-                    return entry.getKey();
-                }
-            }
-        }
-        return null;
+    public EdgeLabel getEdgePath () 
+    {
+        this.findPath(null, null);
     }
 }

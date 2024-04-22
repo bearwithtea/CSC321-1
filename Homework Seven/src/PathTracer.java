@@ -10,7 +10,6 @@ import java.io.FileNotFoundException ;
  */
 public class PathTracer 
 {
-
     /**
      * @param args
      * @throws Exception
@@ -41,8 +40,8 @@ public class PathTracer
                 fsm.addEdge(startState, edge, endState);
             }
 
-            System.out.println(fsm.toString());
-            while (true) //TODO: Is it okay for me to perform an infinite loop here?
+            System.out.println(fsm);
+            while (true) //TODO: See if there is a way to do this without an infinite loop.
             {
             
                 /* Start State */
@@ -61,27 +60,17 @@ public class PathTracer
                     for (String s : steps)
                     allSteps.add(s);
                 }
-                
-                
-                /* Edge State */
-                System.out.println("\nEnter an edge state: ");
-                String edge = input.nextLine();
-                if (edge.equals("*")) break;
-                
 
                 /* Method Calls */
 
-                if (fsm.findEndState(start, allSteps) == null || fsm.getAdjacentState(start, edge) == null || fsm.getAllAdjacentStates(start) == null)  
+                if (fsm.findEndState(start, allSteps) == null)  
                 {
-                    System.out.println("\nILLEGAL SEQUENCE"); //TODO: Which output would you like? does it matter?
+                    System.out.println("\nILLEGAL SEQUENCE");
                 }
                 else 
-                {
-                    System.out.println("\nAdjacent State: " + fsm.getAdjacentState(start, edge));
-                    System.out.println("All Adjacent States: " + fsm.getAllAdjacentStates(start));            
+                {       
                     System.out.println("End State: " + fsm.findEndState(start, allSteps));
                 }
-
             }
             input.close();
             fileReader.close();
@@ -94,7 +83,5 @@ public class PathTracer
             input.close();
             return;
         }
-    
     }
-
 }
