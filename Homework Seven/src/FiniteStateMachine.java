@@ -158,8 +158,17 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         return null;
     }
 
-    public EdgeLabel getEdgePath () 
+    public List<EdgeLabel> getEdgePath () 
     {
-        this.findPath(null, null);
+        this.findPath(startState, endState); //This returns the shortest path.
+
+        List<EdgeLabel> edgesInShortestPath = new ArrayList<EdgeLabel>(); //This is a list to store the edges. TODO: Is there a better structure to accomplish this?
+
+        for (EdgeLabel e : shortestPath) 
+        {   
+            EdgeLabel edge = this.getAdjacentState(startState, e);
+            edgesInShortestPath.add(edge);
+        }
+        return edgesInShortestPath;
     }
 }
