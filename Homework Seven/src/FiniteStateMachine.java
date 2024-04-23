@@ -16,7 +16,6 @@ import java.util.Set;
 public class FiniteStateMachine<StateLabel, EdgeLabel> 
 {
     private HashMap<StateLabel, HashMap<EdgeLabel, StateLabel>> fsm;
-    HashMap<EdgeLabel, StateLabel> edgeMap; //put this in the constructor so that it can be used everywhere!
 
     /**
      * Creates an empty finite state machine (with no states or edges).
@@ -40,8 +39,6 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         }
 
         HashMap<EdgeLabel, StateLabel> edgeMap = this.fsm.get(start); //setting the hashmap at the beginning to edgeMap
-
-        //System.out.println(edgeMap);
         
         edgeMap.put(edge, end); 
     }
@@ -158,15 +155,27 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         return null;
     }
 
-    public List<EdgeLabel> getEdgePath () 
+    public EdgeLabel getEdge(StateLabel startState, StateLabel endState)
     {
-        this.findPath(startState, endState); //This returns the shortest path.
+        HashMap<EdgeLabel, StateLabel> innerMap = (this.fsm.get(startState));
 
-        List<EdgeLabel> edgesInShortestPath = new ArrayList<EdgeLabel>(); //This is a list to store the edges. TODO: Is there a better structure to accomplish this?
+        Set<EdgeLabel> innerEdges = innerMap.keySet();
 
-        for (EdgeLabel e : shortestPath) 
+        for (EdgeLabel edge : innerEdges)
+        { 
+            if (innerMap.get(edge).equals(endState)) 
+            return edge;
+        } 
+        return null;
+    }
+
+    public List<EdgeLabel> getEdgePath (List<StateLabel> shortestPath)
+    {
+        List<EdgeLabel> edgesInShortestPath = new ArrayList<EdgeLabel>();
+
+        for (int i = 0; i < shortestPath.size()-1; i++)
         {   
-            EdgeLabel edge = this.getAdjacentState(startState, e);
+            EdgeLabel edge = this.getEdge(shortestPath.get(i), shortestPath.get(i+1));
             edgesInShortestPath.add(edge);
         }
         return edgesInShortestPath;

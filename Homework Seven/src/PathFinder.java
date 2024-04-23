@@ -43,7 +43,7 @@ public class PathFinder {
             
                 try 
                 {
-                    List<String> path = fsm.findPath(start, end);
+                    List path = fsm.findPath(start, end); //FIXME: Why is this giving me a warning?
                     if (path == null)
                     {
                         System.out.println("\nNO SUCH PATH");
@@ -51,6 +51,7 @@ public class PathFinder {
                     else 
                     {
                         System.out.println("State Path: " + path);
+                        System.out.println("Edge Path: " + fsm.getEdgePath(path));
                     }
                 } 
                 catch (NullPointerException e) 
