@@ -43,7 +43,7 @@ public class PathFinder {
             
                 try 
                 {
-                    List path = fsm.findPath(start, end); //FIXME: Why is this giving me a warning?
+                    List<String> path = fsm.findPath(start, end); //FIXME: Why is this giving me a warning?
                     if (path == null)
                     {
                         System.out.println("\nNO SUCH PATH");
