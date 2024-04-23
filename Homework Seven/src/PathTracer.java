@@ -39,8 +39,7 @@ public class PathTracer
                 String endState = fileReader.next(); //last thing to endState
                 fsm.addEdge(startState, edge, endState);
             }
-
-            System.out.println(fsm);
+            
             while (true) //TODO: See if there is a way to do this without an infinite loop.
             {
             
