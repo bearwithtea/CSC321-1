@@ -3,8 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException ;
 public class PathFinder {
-
-    @SuppressWarnings("resource")
+    @SuppressWarnings("resource") //annoying errors be gone (this is detrminetal to the code.)
     public static void main(String[] args) throws Exception
     {
 

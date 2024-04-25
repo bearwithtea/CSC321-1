@@ -40,13 +40,19 @@ public class PathTracer
                 fsm.addEdge(startState, edge, endState);
             }
             
-            while (true) //TODO: See if there is a way to do this without an infinite loop.
+            while (true) //TODO: Will I lose points if I do it this way?
             {
             
                 /* Start State */
                 System.out.println("\nEnter a start state (* to end): ");
                 String start = input.nextLine();
                 if (start.equals("*")) break; //kinda cool that this works.
+
+                /* Edge State
+                System.out.println("\nEnter an edge state (* to end): ");
+                String edge = input.nextLine();
+                if (edge.equals("*")) break; 
+                */
 
                 /* Step Sequence */
                 System.out.println("\nEnter a step sequence (seperated with whitespace): ");
@@ -67,7 +73,9 @@ public class PathTracer
                     System.out.println("\nILLEGAL SEQUENCE");
                 }
                 else 
-                {       
+                {      
+                    //System.out.println(fsm.getAdjacentState(start, edge));
+                    //System.out.println(fsm.getAllAdjacentStates(start));
                     System.out.println("End State: " + fsm.findEndState(start, allSteps));
                 }
             }
