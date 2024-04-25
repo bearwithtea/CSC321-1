@@ -18,7 +18,6 @@ public class PathFinder {
      */
     public static void main(String[] args) throws Exception
     {
-
         FiniteStateMachine<String, String> fsm = new FiniteStateMachine<>();
 
         //prompting user for file, setting it to lowercase.
@@ -33,6 +32,7 @@ public class PathFinder {
             File inputFile = new File(filename);
             Scanner fileReader = new Scanner(inputFile);
             
+            //while the file has more information
             while (fileReader.hasNext()) 
             {
                 String startState = fileReader.next();
@@ -41,7 +41,7 @@ public class PathFinder {
                 fsm.addEdge(startState, transition, endState);
             }
 
-            while (true) 
+            while (true)
             {
                 /* Start State */
                 System.out.println("Enter a start state (* to end): ");

@@ -40,7 +40,7 @@ public class PathTracer
                 fsm.addEdge(startState, edge, endState);
             }
             
-            while (true) //TODO: Will I lose points if I do it this way?
+            while (true)
             {
             
                 /* Start State */
