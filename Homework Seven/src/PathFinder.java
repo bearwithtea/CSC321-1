@@ -2,8 +2,20 @@ import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException ;
+
+/**
+ * @author Owen McGrath
+ * @version 4/18/2024
+ * Reads in the user file and then produces output for the methods defined in FiniteStateMachine.java
+ */
 public class PathFinder {
     @SuppressWarnings("resource") //annoying errors be gone (this is detrminetal to the code.)
+
+    /**
+     * @param args
+     * @throws Exception
+     * Main method that instantiates the fsm, reads in all of the content, and then performs the method calls for finding the edge state and the edgeds along that state 
+     */
     public static void main(String[] args) throws Exception
     {
 

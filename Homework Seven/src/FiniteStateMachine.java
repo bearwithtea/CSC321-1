@@ -154,7 +154,13 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         }
         return null;
     }
-
+    
+    /**
+     * Finds an edge between a startState and endState
+     * @param startState
+     * @param endState
+     * @return a singlular edge or null
+     */
     public EdgeLabel getEdge(StateLabel startState, StateLabel endState)
     {
         HashMap<EdgeLabel, StateLabel> innerMap = (this.fsm.get(startState));
@@ -169,6 +175,11 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         return null;
     }
 
+    /**
+     * Finds all of the edges within a shortest path
+     * @param shortestPath
+     * @return all of the edges along the shortest path
+     */
     public List<EdgeLabel> getEdgePath (List<StateLabel> shortestPath)
     {
         List<EdgeLabel> edgesInShortestPath = new ArrayList<EdgeLabel>();

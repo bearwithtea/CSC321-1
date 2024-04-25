@@ -6,14 +6,14 @@ import java.io.FileNotFoundException ;
 /**
  * @author Owen McGrath
  * @version 04/18/2024
- * Reads a user file in and throws an error if it is not found, reads all of the content, and then prints out the formatted string.
+ * Reads a user file in and throws an error if it is not found, reads all of the content, and then prints out the methods in finite state machine.
  */
 public class PathTracer 
 {
     /**
      * @param args
      * @throws Exception
-     * Main method that instaties the tree, asks the user for a file, and then prints output if a file is found.
+     * Main method that instaties the fsm, asks the user for a file, and then acts as a driver for the finitestatemachine if a file is found.
      */
     public static void main(String[] args) throws Exception
     {
