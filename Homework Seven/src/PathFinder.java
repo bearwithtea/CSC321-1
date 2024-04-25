@@ -11,7 +11,7 @@ public class PathFinder {
 
         //prompting user for file, setting it to lowercase.
         Scanner input = new Scanner(System.in); 
-        System.out.println("\nEnter FSM file: ");
+        System.out.println("Enter FSM file: ");
         String filename = input.nextLine();
         filename = filename.toLowerCase();
         
@@ -32,20 +32,20 @@ public class PathFinder {
             while (true) 
             {
                 /* Start State */
-                System.out.println("\nEnter a start state (* to end): ");
+                System.out.println("Enter a start state (* to end): ");
                 String start = input.nextLine();
                 if (start.equals("*")) break;
             
                 /* End State */
-                System.out.println("\nEnter an end state: ");
+                System.out.println("Enter an end state: ");
                 String end = input.nextLine();
             
                 try 
                 {
-                    List<String> path = fsm.findPath(start, end); //FIXME: Why is this giving me a warning?
+                    List<String> path = fsm.findPath(start, end);
                     if (path == null)
                     {
-                        System.out.println("\nNO SUCH PATH");
+                        System.out.println("NO SUCH PATH");
                     }
                     else 
                     {
@@ -55,14 +55,14 @@ public class PathFinder {
                 } 
                 catch (NullPointerException e) 
                 {
-                    System.out.println("\nNO SUCH PATH");
+                    System.out.println("NO SUCH PATH");
                 }
             }
         }
 
         catch (FileNotFoundException e) 
         {
-            System.out.println("\n" + "File not found, please try again.\n");
+            System.out.println("File not found, please try again.");
             main(args);
             input.close();
             return;

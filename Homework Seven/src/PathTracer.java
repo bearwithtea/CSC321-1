@@ -21,7 +21,7 @@ public class PathTracer
 
         //prompting user for file, setting it to lowercase.
         Scanner input = new Scanner(System.in); 
-        System.out.println("\nEnter FSM file: ");
+        System.out.println("Enter FSM file: ");
         String filename = input.nextLine();
         filename = filename.toLowerCase();
         
@@ -44,7 +44,7 @@ public class PathTracer
             {
             
                 /* Start State */
-                System.out.println("\nEnter a start state (* to end): ");
+                System.out.println("Enter a start state (* to end): ");
                 String start = input.nextLine();
                 if (start.equals("*")) break; //kinda cool that this works.
 
@@ -55,13 +55,14 @@ public class PathTracer
                 */
 
                 /* Step Sequence */
-                System.out.println("\nEnter a step sequence (seperated with whitespace): ");
+                System.out.println("Enter a step sequence (seperated with whitespace): ");
                 ArrayList<String> allSteps = new ArrayList<>();
-                if (input.hasNext()) 
+                String step = input.nextLine().trim();
+
+                if (!step.equals("")) 
                 {
-                    String step = input.nextLine();
                     if (step.equals("*")) break;
-                    String[] steps = step.split(" ");
+                    String[] steps = step.split("\\s+");
                     for (String s : steps)
                     allSteps.add(s);
                 }
@@ -70,7 +71,7 @@ public class PathTracer
 
                 if (fsm.findEndState(start, allSteps) == null)  
                 {
-                    System.out.println("\nILLEGAL SEQUENCE");
+                    System.out.println("ILLEGAL SEQUENCE");
                 }
                 else 
                 {      
@@ -85,7 +86,7 @@ public class PathTracer
 
         catch (FileNotFoundException e) 
         {
-            System.out.println("\n" + "File not found, please try again.\n");
+            System.out.println("File not found, please try again.\n");
             main(args);
             input.close();
             return;
