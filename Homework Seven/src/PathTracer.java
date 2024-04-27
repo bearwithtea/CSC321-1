@@ -48,11 +48,11 @@ public class PathTracer
                 String start = input.nextLine();
                 if (start.equals("*")) break; //kinda cool that this works.
 
-                /* Edge State
+                //Edge State
                 System.out.println("\nEnter an edge state (* to end): ");
                 String edge = input.nextLine();
                 if (edge.equals("*")) break; 
-                */
+                
 
                 /* Step Sequence */
                 System.out.println("Enter a step sequence (seperated with whitespace): ");
@@ -75,8 +75,8 @@ public class PathTracer
                 }
                 else 
                 {      
-                    //System.out.println(fsm.getAdjacentState(start, edge));
-                    //System.out.println(fsm.getAllAdjacentStates(start));
+                    System.out.println(fsm.getAdjacentState(start, edge));
+                    System.out.println(fsm.getAllAdjacentStates(start));
                     System.out.println("End State: " + fsm.findEndState(start, allSteps));
                 }
             }
