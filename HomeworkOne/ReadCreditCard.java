@@ -29,10 +29,7 @@ public class ReadCreditCard {
         String copyString = "";
         String newCardNumbers = infile.nextLine();
         for (int i = 0; i < newCardNumbers.length(); i++) {
-          if (
-            Character.isDigit(newCardNumbers.charAt(i)) ||
-            newCardNumbers.charAt(i) == '?'
-          ) {
+          if (Character.isDigit(newCardNumbers.charAt(i)) || newCardNumbers.charAt(i) == '?') {
             copyString += newCardNumbers.charAt(i);
           }
         }
