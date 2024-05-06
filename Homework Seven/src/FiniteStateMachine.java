@@ -89,7 +89,7 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
 
         Set<StateLabel> newSet = new HashSet<StateLabel>();
         
-        HashMap<EdgeLabel, StateLabel> innerMap = this.fsm.get(startState);
+        HashMap<EdgeLabel, StateLabel> innerMap = this.fsm.get(startState); //creating an inner map
 
         if (innerMap != null) 
         {
