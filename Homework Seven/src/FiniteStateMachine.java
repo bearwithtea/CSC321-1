@@ -131,7 +131,7 @@ public class FiniteStateMachine<StateLabel, EdgeLabel>
         Queue<List<StateLabel>> paths = new LinkedList<List<StateLabel>>();
         paths.add(startPath);
         
-        while (!paths.isEmpty()) 
+        while (!paths.isEmpty()) //while the path is empty
         {
             List<StateLabel> shortestPath = paths.remove();
             StateLabel current = shortestPath.get(shortestPath.size()-1);
